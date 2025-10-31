@@ -69,6 +69,11 @@ import vanilla_muffins_image from "./vanilla_muffins_image.png";
 import quinoa_image from "./quinoa_image.png";
 import brown_rice_image from "./brown_rice_image.png";
 import barley_image from "./barley_image.png";
+import main_banner3 from './main_banner3.jpg';
+import mango_banner from './mango_banner.jpg';
+import main_banner4 from './main_banner4.png';
+import main_banner5 from './main_banner5.png';
+
 
 export const assets = {
   logo,
@@ -98,6 +103,10 @@ export const assets = {
   bottom_banner_image_sm,
   add_address_iamge,
   box_icon,
+  main_banner3,
+  mango_banner,
+  main_banner4,
+  main_banner5,
 };
 
 export const categories = [
@@ -105,44 +114,46 @@ export const categories = [
     text: "Organic veggies",
     path: "Vegetables",
     image: organic_vegitable_image,
-    bgColor: "#FEF6DA",
+    bgColor: "#BDF2C2",
   },
+  
   {
-    text: "Fresh Fruits",
-    path: "Fruits",
-    image: fresh_fruits_image,
-    bgColor: "#FEE0E0",
-  },
+  text: "Fresh Fruits",
+  path: "Fruits",
+  image: fresh_fruits_image,
+  bgColor: "#FFE56E", // soft banana-yellow tone
+},
+
   {
     text: "Cold Drinks",
     path: "Drinks",
     image: bottles_image,
-    bgColor: "#F0F5DE",
+    bgColor: "#C8F1E3",
   },
   {
     text: "Instant Food",
     path: "Instant",
     image: maggi_image,
-    bgColor: "#E1F5EC",
+    bgColor: "#F9E07F",
   },
   {
     text: "Dairy Products",
     path: "Dairy",
     image: dairy_product_image,
-    bgColor: "#FEE6CD",
+    bgColor: "#FEEEB2",
   },
   {
-    text: "Bakery & Breads",
+    text: "Bakery ",
     path: "Bakery",
     image: bakery_image,
-    bgColor: "#E0F6FE",
+    bgColor: "#FFD9A3",
   },
   {
-    text: "Grains & Cereals",
-    path: "Grains",
-    image: grain_image,
-    bgColor: "#F1E3F9",
-  },
+  text: "Grains ",
+  path: "Grains",
+  image: grain_image,
+  bgColor: "#F7C97E", // warm oat color
+},
 ];
 
 export const footerLinks = [
