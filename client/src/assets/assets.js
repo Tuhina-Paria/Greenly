@@ -214,7 +214,7 @@ export const features = [
 export const dummyProducts = [
   // Vegetables
   {
-    _id: "gd46g23h",
+    _id: "a1",
     name: "Potato 500g",
     category: "Vegetables",
     price: 25,
@@ -230,7 +230,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "gd47g34h",
+    _id: "a2",
     name: "Tomato 1 kg",
     category: "Vegetables",
     price: 40,
@@ -247,7 +247,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "gd48g45h",
+    _id: "a3",
     name: "Carrot 500g",
     category: "Vegetables",
     price: 30,
@@ -263,7 +263,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "gd49g56h",
+    _id: "a4",
     name: "Spinach 500g",
     category: "Vegetables",
     price: 18,
@@ -279,7 +279,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "gd50g67h",
+    _id: "a5",
     name: "Onion 500g",
     category: "Vegetables",
     price: 22,
@@ -297,7 +297,7 @@ export const dummyProducts = [
 
   // Fruits
   {
-    _id: "ek51j12k",
+    _id: "a6",
     name: "Apple 1 kg",
     category: "Fruits",
     price: 120,
@@ -315,7 +315,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek52j23k",
+    _id: "a7",
     name: "Orange 1 kg",
     category: "Fruits",
     price: 80,
@@ -331,7 +331,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek53j34k",
+    _id: "a8",
     name: "Banana 1 kg",
     category: "Fruits",
     price: 50,
@@ -347,7 +347,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek54j45k",
+    _id: "a9",
     name: "Mango 1 kg",
     category: "Fruits",
 
@@ -364,7 +364,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek55j56k",
+    _id: "a10",
     name: "Grapes 500g",
     category: "Fruits",
     price: 70,
@@ -382,7 +382,7 @@ export const dummyProducts = [
 
   // Dairy
   {
-    _id: "ek56j67k",
+    _id: "a11",
     name: "Amul Milk 1L",
     category: "Dairy",
     price: 60,
@@ -399,7 +399,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek57j78k",
+    _id: "a12",
     name: "Paneer 200g",
     category: "Dairy",
     price: 90,
@@ -415,7 +415,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek58j89k",
+    _id: "a13",
     name: "Eggs 12 pcs",
     category: "Dairy",
     price: 90,
@@ -431,7 +431,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek59j90k",
+    _id: "a14",
     name: "Paneer 200g",
     category: "Dairy",
     price: 90,
@@ -447,7 +447,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek60j01k",
+    _id: "a15",
     name: "Cheese 200g",
     category: "Dairy",
     price: 140,
@@ -465,7 +465,7 @@ export const dummyProducts = [
 
   // Drinks
   {
-    _id: "ek61j12k",
+    _id: "a16",
     name: "Coca-Cola 1.5L",
     category: "Drinks",
     price: 80,
@@ -481,7 +481,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek62j23k",
+    _id: "a17",
     name: "Pepsi 1.5L",
     category: "Drinks",
     price: 78,
@@ -497,7 +497,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek63j34k",
+    _id: "a18",
     name: "Sprite 1.5L",
     category: "Drinks",
     price: 79,
@@ -513,7 +513,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek64j45k",
+    _id: "a19",
     name: "Fanta 1.5L",
     category: "Drinks",
     price: 77,
@@ -529,7 +529,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek65j56k",
+    _id: "a20",
     name: "7 Up 1.5L",
     category: "Drinks",
     price: 76,
@@ -547,7 +547,7 @@ export const dummyProducts = [
 
   // Grains
   {
-    _id: "ek66j67k",
+    _id: "a21",
     name: "Basmati Rice 5kg",
     category: "Grains",
     price: 550,
@@ -563,7 +563,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek67j78k",
+    _id: "a22",
     name: "Wheat Flour 5kg",
     category: "Grains",
     price: 250,
@@ -579,7 +579,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek68j89k",
+    _id: "a23",
     name: "Organic Quinoa 500g",
     category: "Grains",
     price: 450,
@@ -595,7 +595,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek69j90k",
+    _id: "a24",
     name: "Brown Rice 1kg",
     category: "Grains",
     price: 120,
@@ -611,7 +611,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek70j01k",
+    _id: "a25",
     name: "Barley 1kg",
     category: "Grains",
     price: 150,
@@ -629,7 +629,7 @@ export const dummyProducts = [
 
   // Bakery
   {
-    _id: "bk01a24z",
+    _id: "a26",
     name: "Brown Bread 400g",
     category: "Bakery",
     price: 40,
@@ -645,7 +645,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "bk02b30y",
+    _id: "a27",
     name: "Butter Croissant 100g",
     category: "Bakery",
     price: 50,
@@ -661,7 +661,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "bk03c31x",
+    _id: "a28",
     name: "Chocolate Cake 500g",
     category: "Bakery",
     price: 350,
@@ -677,7 +677,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "bk04d32w",
+    _id: "a29",
     name: "Whole Bread 400g",
     category: "Bakery",
     price: 45,
@@ -693,7 +693,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "bk05e33v",
+    _id: "a30",
     name: "Vanilla Muffins 6 pcs",
     category: "Bakery",
     price: 100,
@@ -711,7 +711,7 @@ export const dummyProducts = [
 
   // Instant
   {
-    _id: "in01f25u",
+    _id: "a31",
     name: "Maggi Noodles 280g",
     category: "Instant",
 
@@ -728,7 +728,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "in02g26t",
+    _id: "a32",
     name: "Top Ramen 270g",
     category: "Instant",
     price: 45,
@@ -744,7 +744,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "in03h27s",
+    _id: "a33",
     name: "Knorr Cup Soup 70g",
     category: "Instant",
     price: 35,
@@ -760,7 +760,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "in04i28r",
+    _id: "a34",
     name: "Yippee Noodles 260g",
     category: "Instant",
     price: 50,
@@ -776,7 +776,7 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "in05j29q",
+    _id: "a35",
     name: "Oats Noodles 72g",
     category: "Instant",
     price: 40,

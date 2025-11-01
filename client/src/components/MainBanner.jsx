@@ -43,10 +43,10 @@ const MainBanner = () => {
              {index === 2 && (
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-black  rounded-2xl">
                 <h2 className="text-lg sm:text-2xl md:text-4xl font-bold mb-2 drop-shadow-lg">
-                  Your Health is in Your Hand! 
+                   Top Fresh Picks
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg drop-shadow-md">
-                  Freshness you can trust, every day.
+                  Handpicked vegetables and groceries loved by everyone.
                 </p>
               </div>
             )}
