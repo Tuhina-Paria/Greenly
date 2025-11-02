@@ -12,7 +12,7 @@ const MainBanner = () => {
     dots: true,                // small navigation dots
     infinite: true,            // loop forever
     autoplay: true,            // auto-slide
-    autoplaySpeed: 2000,       // 3 seconds
+    autoplaySpeed: 3000,       // 3 seconds
     slidesToShow: 1,           // show one image at a time
     slidesToScroll: 1,
     arrows: false,             // hide arrows for clean look
@@ -26,7 +26,7 @@ const MainBanner = () => {
   ];
 
   return (
-    <div className="w-full mx-auto px-2 md:px-8 mt-4">
+    <div className="w-full mx-auto px-2 md:px-8 mt-30 pb-14">
       <Slider {...settings}>
         {images.map((img, index) => (
           <div key={index} className="relative">

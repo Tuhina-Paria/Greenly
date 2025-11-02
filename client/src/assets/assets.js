@@ -27,11 +27,11 @@ import bottom_banner_image_sm from "./bottom_banner_image_sm.png";
 import add_address_iamge from "./add_address_image.svg";
 import organic_vegitable_image from "./organic_vegitable_image.png";
 import fresh_fruits_image from "./fresh_fruits_image.png";
-import bottles_image from "./bottles_image.png";
+import bottles_image from "./bottles_image.jpg";
 import maggi_image from "./maggi_image.png";
-import dairy_product_image from "./dairy_product_image.png";
-import bakery_image from "./bakery_image.png";
-import grain_image from "./grain_image.png";
+import dairy_product_image from "./dairy_product_image.jpg";
+import bakery_image from "./bakery_image.jpg";
+import grain_image from "./grain_image.jpg";
 import potato_image_1 from "./potato_image_1.png";
 import potato_image_2 from "./potato_image_2.png";
 import potato_image_3 from "./potato_image_3.png";
@@ -73,7 +73,21 @@ import main_banner3 from './main_banner3.jpg';
 import mango_banner from './mango_banner.jpg';
 import main_banner4 from './main_banner4.png';
 import main_banner5 from './main_banner5.png';
-
+import chocolate_image from './chocolate.jpg';
+import tea_coffee_image from './tea_coffee.jpg';
+import oil_ghee_image from './oil_ghee_image.jpg';
+import chocolates_sweets_image from './chocolates_sweets.jpg';
+import main_banner6 from './main_banner6.png';
+import main_banner7 from './main_banner7.png';
+import main_banner8 from './main_banner8.png';
+import main_banner9 from './main_banner9.jpg';
+import main_banner10 from './main_banner10.png';
+import main_banner11 from './main_banner11.png';
+import bath_body from "./bath_body.png";
+import femini_hygine from "./femini_hygine.jpg";
+import chicken from './chicken.jpg';
+import baby_care from './baby_care.jpg';
+import spices from './spices.jpg'
 
 export const assets = {
   logo,
@@ -107,54 +121,116 @@ export const assets = {
   mango_banner,
   main_banner4,
   main_banner5,
+  main_banner6,
+  main_banner7,
+  main_banner8,
+  main_banner9,
+  main_banner10,
+  main_banner11,
 };
-
 export const categories = [
   {
-    text: "Organic veggies",
+    text: "Organic Veggies",
     path: "Vegetables",
     image: organic_vegitable_image,
-    bgColor: "#BDF2C2",
+    bgColor: "#BDF2C2", // fresh green
   },
-  
   {
-  text: "Fresh Fruits",
-  path: "Fruits",
-  image: fresh_fruits_image,
-  bgColor: "#FFE56E", // soft banana-yellow tone
-},
-
+    text: "Fresh Fruits",
+    path: "Fruits",
+    image: fresh_fruits_image,
+    bgColor: "#FFE56E", // banana yellow
+  },
   {
     text: "Cold Drinks",
     path: "Drinks",
     image: bottles_image,
-    bgColor: "#C8F1E3",
+    bgColor: "#C8F1E3", // mint aqua
   },
   {
-    text: "Instant Food",
+    text: "Noodles & Pasta",
     path: "Instant",
     image: maggi_image,
-    bgColor: "#F9E07F",
+    bgColor: "#F9E07F", // golden yellow
   },
   {
     text: "Dairy Products",
     path: "Dairy",
     image: dairy_product_image,
-    bgColor: "#FEEEB2",
+    bgColor: "#FEEEB2", // creamy pastel
   },
   {
-    text: "Bakery ",
+    text: "Bakery",
     path: "Bakery",
     image: bakery_image,
-    bgColor: "#FFD9A3",
+    bgColor: "#FFD9A3", // warm peach
   },
   {
-  text: "Grains ",
-  path: "Grains",
-  image: grain_image,
-  bgColor: "#F7C97E", // warm oat color
-},
+    text: "Grains",
+    path: "Grains",
+    image: grain_image,
+    bgColor: "#FFECD1", // light wheat
+  },
+  {
+    text: "Chocolates & Sweets",
+    path: "Chocolates_Sweets",
+    image: chocolates_sweets_image,
+    bgColor: "#F5C6A5", // cocoa caramel tone
+  },
+  {
+    text: "Tea & Coffee",
+    path: "Tea_Coffee",
+    image: tea_coffee_image,
+    bgColor: "#E2C8A0", // light cappuccino beige
+  },
+  {
+    text: "Oil & Ghee",
+    path: "Oil_Ghee",
+    image: oil_ghee_image,
+    bgColor: "#FFF3B0", // buttery soft yellow
+  },
 ];
+
+
+export const exploreCategories = [
+  {
+    text: "Bath & Body",
+    image: bath_body,  // use your image imports
+    path: "bath_body",
+    bgColor: "#EAF9EF",
+  },
+  {
+    text: "Femini Hygiene",
+    image: femini_hygine,
+    path: "femini_hygine",
+    bgColor: "#F4FFF6",
+  },
+  {
+    text: "Non veg",
+    image: chicken,
+    path: "chicken",
+    bgColor: "#E6F8F3",
+  },
+  {
+    text: "Baby Care",
+    image: baby_care,
+    path: "baby_care",
+    bgColor: "#E8F6EA",
+  },
+  {
+    text: "Spices",
+    image: spices,
+    path: "spices",
+    bgColor: "#E7F4EC",
+  },
+  // {
+  //   text: "Organic Staples",
+  //   image: organic_image,
+  //   path: "organic-staples",
+  //   bgColor: "#F0FAF3",
+  // },
+];
+
 
 export const footerLinks = [
   {

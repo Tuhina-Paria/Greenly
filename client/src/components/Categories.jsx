@@ -6,7 +6,8 @@ const Categories = () => {
   const { navigate } = useAppContext();
 
   return (
-    <div className="mt-12 py-10 bg-gradient-to-b from-[#F4FFF6] to-white">
+    <div className="mt-2 py-8 bg-gradient-to-b from-[#F4FFF6] to-white">
+
       {/* Section Title */}
       <div className="text-center mb-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-green-700">Popular Categories</h2>

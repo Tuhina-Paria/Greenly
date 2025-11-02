@@ -8,6 +8,7 @@ import {Toaster} from 'react-hot-toast'
 
 // Import the Home page
 import Home from './pages/Home'
+import Footer from './components/Footer'
 
 // Main App Component
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
           */}
         </Routes>
       </div>
+      {!isSellerPath && <Footer/>}
     </div>
   )
 }
