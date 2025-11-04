@@ -10,8 +10,13 @@ import {Toaster} from 'react-hot-toast'
 import Home from './pages/Home'
 import Footer from './components/Footer'
 
+import { useAppContext } from './context/AppContext'
+import Login from './components/Login'
+
+
 // Main App Component
 const App = () => {
+  const {showUserLogin}=useAppContext();
 
   // Get the current URL path using useLocation()
   // Example: if you are on "http://localhost:5173/seller", pathname = "/seller"
@@ -26,6 +31,8 @@ const App = () => {
         Otherwise, show the Navbar for normal user pages.
       */}
       {isSellerPath ? null : <Navbar />}
+      {showUserLogin ? <Login/> :null}
+
       <Toaster/>
 
 
@@ -47,7 +54,9 @@ const App = () => {
         </Routes>
       </div>
       {!isSellerPath && <Footer/>}
+      
     </div>
+    
   )
 }
 

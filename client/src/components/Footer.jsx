@@ -16,8 +16,8 @@ const Footer = () => {
               src="/favicon.svg"
               alt="Greenly Logo"
             />
-            <span className="text-lg sm:text-xl font-bold text-green-600">
-              reenly
+            <span className="text-lg sm:text-xl font-bold text-black-600">
+            reenly
             </span>
           </div>
 
@@ -55,7 +55,7 @@ const Footer = () => {
       {/* 🌿 Bottom Section */}
       <p className="py-4 text-center text-sm md:text-base text-gray-500/80">
         © {currentYear}{" "}
-        <span className="text-green-600 font-semibold">Greenly</span> — All Rights Reserved.
+        <span className="text-black-600 font-semibold">Greenly</span> — All Rights Reserved.
       </p>
     </footer>
   );

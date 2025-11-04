@@ -1,6 +1,9 @@
 import logo from "./logo.svg";
 import search_icon from "./search_icon.svg";
 import remove_icon from "./remove_icon.svg";
+import lock from './lock.svg';
+import mail from './mail.svg';
+import user from './user.svg' ;
 import arrow_right_icon_colored from "./arrow_right_icon_colored.svg";
 import star_icon from "./star_icon.svg";
 import star_dull_icon from "./star_dull_icon.svg";
@@ -92,6 +95,9 @@ import spices from './spices.jpg'
 export const assets = {
   logo,
   search_icon,
+  lock,
+  user,
+  mail,
   remove_icon,
   arrow_right_icon_colored,
   star_icon,
