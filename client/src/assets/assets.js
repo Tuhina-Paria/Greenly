@@ -91,6 +91,23 @@ import femini_hygine from "./femini_hygine.jpg";
 import chicken from './chicken.jpg';
 import baby_care from './baby_care.jpg';
 import spices from './spices.jpg'
+import baby1_image from './baby1.jpg';
+import baby2_image from './baby2.jpg';
+import oil1_image from './oil1.jpg';
+import oil2_image from './oil2.jpg';
+import shampoo1_image from './shampoo1.jpg';
+import shampoo2_image from './shampoo2.jpg';
+import shampoo3_image from './shampoo3.jpg';
+import tea1_image from './tea1.jpg';
+import coffee2_image from './coffee2.jpg';
+import pad1_image from './pad1.jpg';
+import pad2_image from './pad2.jpg';
+import spices1_image from './spices1.jpg';
+import spices2_image from './spices2.jpg';
+import spices3_image from './spices3.jpg';
+import spices4_image from './spices4.jpg';
+
+
 
 export const assets = {
   logo,
@@ -133,6 +150,22 @@ export const assets = {
   main_banner9,
   main_banner10,
   main_banner11,
+  chocolate_image,
+  baby1_image,
+  baby2_image,
+  oil1_image,
+  oil2_image,
+  shampoo1_image,
+  shampoo2_image,
+  shampoo3_image,
+  tea1_image,
+  coffee2_image,
+  pad1_image,
+  pad2_image,
+  spices1_image,
+  spices2_image,
+  spices3_image,
+  spices4_image,
 };
 export const categories = [
   {
@@ -154,7 +187,7 @@ export const categories = [
     bgColor: "#C8F1E3", // mint aqua
   },
   {
-    text: "Noodles & Pasta",
+    text: "Instant",
     path: "Instant",
     image: maggi_image,
     bgColor: "#F9E07F", // golden yellow
@@ -461,6 +494,8 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
+  
+  
 
   // Dairy
   {
@@ -857,22 +892,277 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-  {
-    _id: "a35",
-    name: "Oats Noodles 72g",
-    category: "Instant",
-    price: 40,
-    offerPrice: 35,
-    image: [maggi_oats_image],
-    description: [
-      "Healthy alternative with oats",
-      "Good for digestion",
-      "Perfect for breakfast or snacks",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
+    
+  //Chocolates & sweets
+ {
+  _id: "a36",
+  name: "Cadbury Dairy Milk, 11 gram",
+  category: "Chocolates & Sweets",
+  price: 40,
+  offerPrice: 35,
+  image: [chocolate_image],
+  description: [
+    "Made with rich and creamy milk chocolate for a smooth, melt-in-the-mouth taste.",
+    "Perfect mini treat to satisfy your sweet cravings anytime, anywhere.",
+    "Ideal for gifting, sharing, or enjoying after meals.",
+  ],
+  createdAt: "2025-03-25T07:17:46.018Z",
+  updatedAt: "2025-03-25T07:18:13.103Z",
+  inStock: true,
+},
+//baby care
+{
+  _id: "a37",
+  name: "Pampers Baby-Dry Diapers, Small (S) - 50 Pieces",
+  category: "Baby Care",
+  price: 750,
+  offerPrice: 699,
+  image: [baby1_image],
+  description: [
+    "Provides up to 12 hours of dryness with extra absorb channels that evenly distribute wetness.",
+    "Soft, cotton-like outer layer keeps your baby’s skin comfortable and irritation-free.",
+    "Flexible waistband ensures a snug fit and allows easy movement for active babies.",
+    "Clinically tested and safe for newborn and infant skin with a gentle baby lotion layer.",
+  ],
+  createdAt: "2025-03-25T07:20:12.018Z",
+  updatedAt: "2025-03-25T07:22:09.103Z",
+  inStock: true,
+},
+
+{
+  _id: "a38",
+  name: "Pampers Baby-Dry Diapers, Small (S) - 50 Pieces",
+  category: "Baby Care",
+  price: 850,
+  offerPrice: 699,
+  image: [baby2_image],
+  description: [
+    "Provides up to 12 hours of dryness with extra absorb channels that evenly distribute wetness.",
+    "Soft, cotton-like outer layer keeps your baby’s skin comfortable and irritation-free.",
+    "Flexible waistband ensures a snug fit and allows easy movement for active babies.",
+    "Clinically tested and safe for newborn and infant skin with a gentle baby lotion layer.",
+  ],
+  createdAt: "2025-03-25T07:20:12.018Z",
+  updatedAt: "2025-03-25T07:22:09.103Z",
+  inStock: true,
+},
+
+//oil&ghee
+{
+  _id: "a39",
+  name: "Emami Healthy & Tasty Refined Oil, 1 Litre",
+  category: " Oil & Ghee",
+  price: 190,
+  offerPrice: 175,
+  image: [oil1_image],
+  description: [
+    "Made with the goodness of refined sunflower and rice bran oils for balanced nutrition and great taste.",
+    "Rich in Omega-6 and Vitamin E to help maintain heart health and boost immunity.",
+    "Ideal for deep frying, sautéing, and everyday cooking with a light aroma and non-sticky texture.",
+    "Fortified with natural antioxidants to retain freshness and promote overall wellness.",
+  ],
+  createdAt: "2025-03-25T07:23:11.018Z",
+  updatedAt: "2025-03-25T07:25:19.103Z",
+  inStock: true,
+},
+{
+  _id: "a40",
+  name: "Fortune Kachi Ghani Mustard Oil, 1 Litre",
+  category: "Oils & Ghee",
+  price: 210,
+  offerPrice: 195,
+  image: [oil2_image],
+  description: [
+    "Extracted from the finest mustard seeds using the traditional cold-press method to retain natural aroma and nutrients.",
+    "Rich in Omega-3 fatty acids and antioxidants that help boost immunity and support heart health.",
+    "Adds an authentic pungent flavor and golden color to traditional Indian dishes like pickles, curries, and stir-fries.",
+    "100% pure and unrefined — perfect for cooking, marination, and even hair or skin care.",
+  ],
+  createdAt: "2025-03-25T07:30:42.018Z",
+  updatedAt: "2025-03-25T07:32:10.103Z",
+  inStock: true,
+},
+{
+  _id: "a40",
+  name: "Head & Shoulders Anti-Dandruff Shampoo, 650 ml",
+  category: "Bath & Body",
+  price: 420,
+  offerPrice: 389,
+  image: [shampoo1_image],
+  description: [
+    "Formulated with active zinc pyrithione that effectively removes dandruff and prevents flakes from returning.",
+    "Gently cleanses the scalp while keeping hair soft, fresh, and pleasantly fragrant.",
+    "Provides long-lasting dandruff protection with regular use, leaving scalp itch-free and healthy.",
+    "Suitable for all hair types and safe for daily use — recommended by dermatologists worldwide.",
+  ],
+  createdAt: "2025-03-25T07:37:45.018Z",
+  updatedAt: "2025-03-25T07:39:12.103Z",
+  inStock: true,
+},
+{
+  _id: "a41",
+  name: "Dove Intense Repair Shampoo, 650 ml",
+  category: "bath & Body",
+  price: 399,
+  offerPrice: 365,
+  image: [shampoo2_image],
+  description: [
+    "Enriched with Keratin Actives that deeply nourish and repair damaged hair from root to tip.",
+    "Strengthens hair strands to reduce breakage and split ends, leaving it soft and smooth.",
+    "Gently cleanses scalp while restoring essential moisture for visibly healthy hair.",
+    "Suitable for daily use and all hair types — especially dry, frizzy, or chemically treated hair.",
+  ],
+  createdAt: "2025-03-25T07:34:10.018Z",
+  updatedAt: "2025-03-25T07:36:20.103Z",
+  inStock: true,
+},
+{
+  _id: "a42",
+  name: "Pantene Hair Fall Control Shampoo, 650 ml",
+  category: "Bath * Body",
+  price: 410,
+  offerPrice: 379,
+  image: [shampoo3_image],
+  description: [
+    "Enriched with Pro-Vitamin formula that strengthens hair from root to tip to reduce hair fall effectively.",
+    "Nourishes and repairs damaged strands, leaving hair visibly thicker, smoother, and more resilient.",
+    "Gently cleanses the scalp while restoring essential nutrients for long-lasting shine and softness.",
+    "Perfect for daily use and suitable for all hair types — helps reduce breakage due to hair fall.",
+  ],
+  createdAt: "2025-03-25T07:40:40.018Z",
+  updatedAt: "2025-03-25T07:42:15.103Z",
+  inStock: true,
+},
+{
+  _id: "a43",
+  name: "Nescafé Classic Instant Coffee, 100g",
+  category: "Tea & Coffee",
+  price: 320,
+  offerPrice: 299,
+  image: [coffee2_image],
+  description: [
+    "Rich and aromatic instant coffee made from 100% pure coffee beans.",
+    "Perfect for a quick, refreshing boost of energy anytime, anywhere.",
+  ],
+  createdAt: "2025-03-25T07:43:50.018Z",
+  updatedAt: "2025-03-25T07:45:12.103Z",
+  inStock: true,
+},
+{
+  _id: "a44",
+  name: "Tata Tea Agni, 500g",
+  category: "Tea & Coffe",
+  price: 280,
+  offerPrice: 260,
+  image: [tea1_image],
+  description: [
+    "Strong and flavorful tea made from premium Assam tea leaves.",
+    "Gives a rich color, intense aroma, and perfect kick to start your day.",
+  ],
+  createdAt: "2025-03-25T07:46:20.018Z",
+  updatedAt: "2025-03-25T07:47:55.103Z",
+  inStock: true,
+},
+
+
+//femini 
+{
+  _id: "a45",
+  name: "Whisper Ultra Soft Sanitary Pads, XL - 15 Pads",
+  category: "Feminine Hygiene",
+  price: 180,
+  offerPrice: 165,
+  image: [pad1_image],
+  description: [
+    "Extra soft and gentle on skin with superior absorbency for all-day comfort.",
+    "Keeps you dry and fresh even during heavy flow days.",
+  ],
+  createdAt: "2025-03-25T07:49:30.018Z",
+  updatedAt: "2025-03-25T07:51:02.103Z",
+  inStock: true,
+},
+{
+  _id: "a46",
+  name: "Wishper Secure Cottony Soft Sanitary Pads, XL - 20 Pads",
+  category: "Feminine Hygiene",
+  price: 170,
+  offerPrice: 155,
+  image: [pad2_image],
+  description: [
+    "Cottony soft cover for a rash-free experience and reliable protection.",
+    "Odor control and up to 12 hours of leakage protection for daily confidence.",
+  ],
+  createdAt: "2025-03-25T07:52:14.018Z",
+  updatedAt: "2025-03-25T07:53:40.103Z",
+  inStock: true,
+},
+{
+  _id: "a47",
+  name: "Catch Cumin Seeds (Jeera) – 100g",
+  category: "Spices",
+  price: 60,
+  offerPrice: 55,
+  image: [spices3_image],
+  description: [
+    "Premium quality cumin seeds with rich aroma and strong flavor.",
+    "Perfect for seasoning curries, rice, and snacks for authentic Indian taste.",
+  ],
+  createdAt: "2025-03-25T08:00:00.018Z",
+  updatedAt: "2025-03-25T08:01:10.103Z",
+  inStock: true,
+},
+
+{
+  _id: "a48",
+  name: "Everest Red Chilli Powder – 100g",
+  category: "Spices",
+  price: 55,
+  offerPrice: 48,
+  image: [spices4_image],
+  description: [
+    "Finely ground red chilli powder for vibrant color and balanced heat.",
+    "Adds an extra kick of flavor to every Indian dish.",
+  ],
+  createdAt: "2025-03-25T08:02:12.018Z",
+  updatedAt: "2025-03-25T08:03:25.103Z",
+  inStock: true,
+},
+
+{
+  _id: "a49",
+  name: "Aashirvaad Turmeric Powder – 100g",
+  category: "Spices",
+  price: 50,
+  offerPrice: 45,
+  image: [spices1_image],
+  description: [
+    "Pure turmeric powder with high curcumin content for rich color and aroma.",
+    "Known for its natural health benefits and golden freshness.",
+  ],
+  createdAt: "2025-03-25T08:04:00.018Z",
+  updatedAt: "2025-03-25T08:05:10.103Z",
+  inStock: true,
+},
+{
+  _id: "a40",
+  name: "Sunrise Cumin Powder – 100g",
+  category: "Spices",
+  price: 58,
+  offerPrice: 50,
+  image: [spices2_image],
+  description: [
+    "Finely ground cumin powder that enhances the flavor of every dish.",
+    "Adds earthy warmth and aroma to dals, curries, and masalas.",
+  ],
+  createdAt: "2025-03-25T08:06:00.018Z",
+  updatedAt: "2025-03-25T08:07:15.103Z",
+  inStock: true,
+},
+
+
+
+
+
 ];
 
 export const dummyAddress = [
@@ -889,6 +1179,25 @@ export const dummyAddress = [
     country: "IN",
     phone: "1234567890",
   },
+  //bath & body
+  {
+  _id: "a40",
+  name: "Head & Shoulders Anti-Dandruff Shampoo, 650 ml",
+  category: "Bath & Body",
+  price: 420,
+  offerPrice: 389,
+  image: [shampoo1_image],
+  description: [
+    "Formulated with active zinc pyrithione that effectively removes dandruff and prevents flakes from returning.",
+    "Gently cleanses the scalp while keeping hair soft, fresh, and pleasantly fragrant.",
+    "Provides long-lasting dandruff protection with regular use, leaving scalp itch-free and healthy.",
+    "Suitable for all hair types and safe for daily use — recommended by dermatologists worldwide.",
+  ],
+  createdAt: "2025-03-25T07:37:45.018Z",
+  updatedAt: "2025-03-25T07:39:12.103Z",
+  inStock: true,
+}
+
 ];
 
 export const dummyOrders = [

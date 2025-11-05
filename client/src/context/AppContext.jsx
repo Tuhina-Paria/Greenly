@@ -15,6 +15,7 @@ const { VITE_CURRENCY: currency } = import.meta.env;
   const [showUserLogin, setShowUserLogin] = useState(false);
   const [products, setProducts] = useState([]);
   const[cartItems,setCartItems]=useState({});
+  const [searchQuerey,setSearchQuery]=useState({});
 
 
   //fetch all products
@@ -66,7 +67,7 @@ fetchProducts();
 },[]);
 
 
-  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems};
+  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuerey,setSearchQuery};
 
   return (
     <AppContext.Provider value={value}>
