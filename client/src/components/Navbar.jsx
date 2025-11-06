@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+
+
+
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { assets } from "../assets/assets.js";
 import { useAppContext } from "../context/AppContext";
@@ -6,12 +9,23 @@ import { useAppContext } from "../context/AppContext";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false); // for mobile expanding search
-  const { user, setUser, setShowUserLogin, navigate } = useAppContext();
+  const { user, setUser, setShowUserLogin, navigate ,setSearchQuery,searchQuery} = useAppContext();
 
   const logout = async () => {
     setUser(null);
     navigate("/");
   };
+
+
+useEffect(()=>{
+if(searchQuery.length>0){
+  navigate("/products");
+}
+},[searchQuery])
+
+
+
+
 
   return (
     <nav className="w-full border-b border-gray-200 bg-white fixed top-0 left-0 z-50">
@@ -25,7 +39,7 @@ const Navbar = () => {
 
         {/* ---------- Center: Search Bar (Desktop only) ---------- */}
         <div className="hidden sm:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full bg-gray-50 w-[280px] lg:w-[350px]">
-          <input
+          <input onChange={(e)=>setSearchQuery(e.target.value)}
             className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
             type="text"
             placeholder="Search products"
