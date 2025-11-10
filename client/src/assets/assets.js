@@ -212,19 +212,19 @@ export const categories = [
   },
   {
     text: "Chocolates & Sweets",
-    path: "Chocolates_Sweets",
+    path: "Chocolates-Sweets",
     image: chocolates_sweets_image,
     bgColor: "#F5C6A5", // cocoa caramel tone
   },
   {
     text: "Tea & Coffee",
-    path: "Tea_Coffee",
+    path: "Tea-Coffee",
     image: tea_coffee_image,
     bgColor: "#E2C8A0", // light cappuccino beige
   },
   {
     text: "Oil & Ghee",
-    path: "Oil_Ghee",
+    path: "Oil-Ghee",
     image: oil_ghee_image,
     bgColor: "#FFF3B0", // buttery soft yellow
   },
@@ -235,25 +235,25 @@ export const exploreCategories = [
   {
     text: "Bath & Body",
     image: bath_body,  // use your image imports
-    path: "bath_body",
+    path: "Bath-Body",
     bgColor: "#EAF9EF",
   },
   {
-    text: "Femini Hygiene",
+    text: "Feminine Hygiene",
     image: femini_hygine,
-    path: "femini_hygine",
+    path: "Feminine-Hygiene",
     bgColor: "#F4FFF6",
   },
   {
-    text: "Non veg",
+    text: "Non Veg",
     image: chicken,
-    path: "chicken",
+    path: "Non-Veg",
     bgColor: "#E6F8F3",
   },
   {
     text: "Baby Care",
     image: baby_care,
-    path: "baby_care",
+    path: "Baby-Care",
     bgColor: "#E8F6EA",
   },
   {
@@ -534,7 +534,7 @@ export const dummyProducts = [
   {
     _id: "a13",
     name: "Eggs 12 pcs",
-    category: "Dairy",
+    category: "Non-Veg",
     price: 90,
     offerPrice: 85,
     image: [eggs_image],
@@ -897,7 +897,7 @@ export const dummyProducts = [
  {
   _id: "a36",
   name: "Cadbury Dairy Milk, 11 gram",
-  category: "Chocolates & Sweets",
+  category: "Chocolates-Sweets",
   price: 40,
   offerPrice: 35,
   image: [chocolate_image],
@@ -914,7 +914,7 @@ export const dummyProducts = [
 {
   _id: "a37",
   name: "Pampers Baby-Dry Diapers, Small (S) - 50 Pieces",
-  category: "Baby Care",
+  category: "Baby-Care",
   price: 750,
   offerPrice: 699,
   image: [baby1_image],
@@ -932,7 +932,7 @@ export const dummyProducts = [
 {
   _id: "a38",
   name: "Pampers Baby-Dry Diapers, Small (S) - 50 Pieces",
-  category: "Baby Care",
+  category: "Baby-Care",
   price: 850,
   offerPrice: 699,
   image: [baby2_image],
@@ -951,7 +951,7 @@ export const dummyProducts = [
 {
   _id: "a39",
   name: "Emami Healthy & Tasty Refined Oil, 1 Litre",
-  category: " Oil & Ghee",
+  category: "Oil-Ghee",
   price: 190,
   offerPrice: 175,
   image: [oil1_image],
@@ -968,7 +968,7 @@ export const dummyProducts = [
 {
   _id: "a40",
   name: "Fortune Kachi Ghani Mustard Oil, 1 Litre",
-  category: "Oils & Ghee",
+  category: "Oil-Ghee",
   price: 210,
   offerPrice: 195,
   image: [oil2_image],
@@ -985,7 +985,7 @@ export const dummyProducts = [
 {
   _id: "a40",
   name: "Head & Shoulders Anti-Dandruff Shampoo, 650 ml",
-  category: "Bath & Body",
+  category: "Bath-Body",
   price: 420,
   offerPrice: 389,
   image: [shampoo1_image],
@@ -1002,7 +1002,7 @@ export const dummyProducts = [
 {
   _id: "a41",
   name: "Dove Intense Repair Shampoo, 650 ml",
-  category: "bath & Body",
+  category: "Bath-Body",
   price: 399,
   offerPrice: 365,
   image: [shampoo2_image],
@@ -1019,7 +1019,7 @@ export const dummyProducts = [
 {
   _id: "a42",
   name: "Pantene Hair Fall Control Shampoo, 650 ml",
-  category: "Bath * Body",
+  category: "Bath-Body",
   price: 410,
   offerPrice: 379,
   image: [shampoo3_image],
@@ -1036,7 +1036,7 @@ export const dummyProducts = [
 {
   _id: "a43",
   name: "Nescafé Classic Instant Coffee, 100g",
-  category: "Tea & Coffee",
+  category: "Tea-Coffee",
   price: 320,
   offerPrice: 299,
   image: [coffee2_image],
@@ -1051,7 +1051,7 @@ export const dummyProducts = [
 {
   _id: "a44",
   name: "Tata Tea Agni, 500g",
-  category: "Tea & Coffe",
+  category: "Tea-Coffee",
   price: 280,
   offerPrice: 260,
   image: [tea1_image],
@@ -1069,7 +1069,7 @@ export const dummyProducts = [
 {
   _id: "a45",
   name: "Whisper Ultra Soft Sanitary Pads, XL - 15 Pads",
-  category: "Feminine Hygiene",
+  category: "Feminine-Hygiene",
   price: 180,
   offerPrice: 165,
   image: [pad1_image],
@@ -1084,7 +1084,7 @@ export const dummyProducts = [
 {
   _id: "a46",
   name: "Wishper Secure Cottony Soft Sanitary Pads, XL - 20 Pads",
-  category: "Feminine Hygiene",
+  category: "Feminine-Hygiene",
   price: 170,
   offerPrice: 155,
   image: [pad2_image],
@@ -1099,7 +1099,7 @@ export const dummyProducts = [
 {
   _id: "a47",
   name: "Catch Cumin Seeds (Jeera) – 100g",
-  category: "Spices",
+  category: "spices",
   price: 60,
   offerPrice: 55,
   image: [spices3_image],
@@ -1115,7 +1115,7 @@ export const dummyProducts = [
 {
   _id: "a48",
   name: "Everest Red Chilli Powder – 100g",
-  category: "Spices",
+  category: "spices",
   price: 55,
   offerPrice: 48,
   image: [spices4_image],
@@ -1131,7 +1131,7 @@ export const dummyProducts = [
 {
   _id: "a49",
   name: "Aashirvaad Turmeric Powder – 100g",
-  category: "Spices",
+  category: "spices",
   price: 50,
   offerPrice: 45,
   image: [spices1_image],
@@ -1146,7 +1146,7 @@ export const dummyProducts = [
 {
   _id: "a40",
   name: "Sunrise Cumin Powder – 100g",
-  category: "Spices",
+  category: "spices",
   price: 58,
   offerPrice: 50,
   image: [spices2_image],

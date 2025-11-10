@@ -13,6 +13,7 @@ import Footer from './components/Footer'
 import { useAppContext } from './context/AppContext'
 import Login from './components/Login'
 import AllProducts from './pages/AllProducts'
+import ProductCategory from './pages/ProductCategory'
 
 
 // Main App Component
@@ -48,6 +49,7 @@ const App = () => {
           {/* User homepage */}
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<AllProducts />} />
+             <Route path='/products/:category' element={<ProductCategory/>} />
 
           {/* 
             Later you can add a route for your Seller/Admin Dashboard here, like:
