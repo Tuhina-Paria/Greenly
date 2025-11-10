@@ -105,18 +105,21 @@ if(searchQuery.length>0){
       </div>
 
       {/* ---------- Mobile Search (expand under navbar) ---------- */}
-      {showSearch && (
-        <div className="sm:hidden border-t border-gray-200 px-4 pb-2 pt-1 bg-white">
-          <div className="flex items-center gap-2 border border-gray-300 px-3 rounded-full bg-gray-50">
-            <input
-              className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
-              type="text"
-              placeholder="Search products..."
-            />
-            <img src={assets.search_icon} alt="search_icon" className="w-4 h-4 opacity-70" />
-          </div>
-        </div>
-      )}
+     {showSearch && (
+  <div className="sm:hidden border-t border-gray-200 px-4 pb-2 pt-1 bg-white">
+    <div className="flex items-center gap-2 border border-gray-300 px-3 rounded-full bg-gray-50">
+      <input
+        value={searchQuery || ""}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
+        type="text"
+        placeholder="Search products..."
+      />
+      <img src={assets.search_icon} alt="search_icon" className="w-4 h-4 opacity-70" />
+    </div>
+  </div>
+)}
+
 
       {/* ---------- Mobile Menu ---------- */}
       {open && (

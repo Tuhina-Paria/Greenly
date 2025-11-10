@@ -15,7 +15,8 @@ const { VITE_CURRENCY: currency } = import.meta.env;
   const [showUserLogin, setShowUserLogin] = useState(false);
   const [products, setProducts] = useState([]);
   const[cartItems,setCartItems]=useState({});
-  const [searchQuery,setSearchQuery]=useState({});
+  const [searchQuery, setSearchQuery] = useState("");
+
 
 
   //fetch all products
