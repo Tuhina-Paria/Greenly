@@ -9,7 +9,7 @@ import { useAppContext } from "../context/AppContext";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false); // for mobile expanding search
-  const { user, setUser, setShowUserLogin, navigate ,setSearchQuery,searchQuery} = useAppContext();
+  const { user, setUser, setShowUserLogin, navigate ,setSearchQuery,searchQuery,getCartCount} = useAppContext();
 
   const logout = async () => {
     setUser(null);
@@ -56,7 +56,7 @@ if(searchQuery.length>0){
           {/* Cart Icon */}
           <div onClick={() => navigate("/cart")} className="relative cursor-pointer">
             <img src={assets.nav_cart_icon} alt="nav_cart_icon" className="w-6 opacity-80" />
-            <span className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full flex items-center justify-center">3</span>
+            <span className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full flex items-center justify-center">{getCartCount()}</span>
           </div>
 
           {/* Login/Profile */}
@@ -90,12 +90,15 @@ if(searchQuery.length>0){
           </button>
 
           {/* Cart */}
-          <div onClick={() => navigate("/cart")} className="relative cursor-pointer">
-            <img src={assets.nav_cart_icon} alt="nav_cart_icon" className="w-6 opacity-80" />
-            <span className="absolute -top-2 -right-3 text-[10px] text-white bg-primary w-[16px] h-[16px] rounded-full flex items-center justify-center">
-              3
-            </span>
-          </div>
+<div onClick={() => navigate("/cart")} className="relative cursor-pointer">
+  <img src={assets.nav_cart_icon} alt="nav_cart_icon" className="w-6 opacity-80" />
+  
+    <span className="absolute -top-2 -right-3 text-[10px] text-white bg-primary w-[16px] h-[16px] rounded-full flex items-center justify-center">
+      {getCartCount()}
+    </span>
+  
+</div>
+
 
           {/* Menu icon */}
           <button onClick={() => setOpen(!open)} aria-label="Menu">

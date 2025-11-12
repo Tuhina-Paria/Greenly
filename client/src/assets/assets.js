@@ -903,8 +903,6 @@ export const dummyProducts = [
   image: [chocolate_image],
   description: [
     "Made with rich and creamy milk chocolate for a smooth, melt-in-the-mouth taste.",
-    "Perfect mini treat to satisfy your sweet cravings anytime, anywhere.",
-    "Ideal for gifting, sharing, or enjoying after meals.",
   ],
   createdAt: "2025-03-25T07:17:46.018Z",
   updatedAt: "2025-03-25T07:18:13.103Z",
@@ -913,16 +911,14 @@ export const dummyProducts = [
 //baby care
 {
   _id: "a37",
-  name: "Pampers Baby-Dry Diapers, Small (S) - 50 Pieces",
+  name: "Pampers Baby-Dry Diapers",
   category: "Baby-Care",
   price: 750,
   offerPrice: 699,
   image: [baby1_image],
   description: [
     "Provides up to 12 hours of dryness with extra absorb channels that evenly distribute wetness.",
-    "Soft, cotton-like outer layer keeps your baby’s skin comfortable and irritation-free.",
-    "Flexible waistband ensures a snug fit and allows easy movement for active babies.",
-    "Clinically tested and safe for newborn and infant skin with a gentle baby lotion layer.",
+  
   ],
   createdAt: "2025-03-25T07:20:12.018Z",
   updatedAt: "2025-03-25T07:22:09.103Z",
@@ -931,16 +927,14 @@ export const dummyProducts = [
 
 {
   _id: "a38",
-  name: "Pampers Baby-Dry Diapers, Small (S) - 50 Pieces",
+  name: "Pampers Baby-Dry Diapers",
   category: "Baby-Care",
   price: 850,
   offerPrice: 699,
   image: [baby2_image],
   description: [
     "Provides up to 12 hours of dryness with extra absorb channels that evenly distribute wetness.",
-    "Soft, cotton-like outer layer keeps your baby’s skin comfortable and irritation-free.",
-    "Flexible waistband ensures a snug fit and allows easy movement for active babies.",
-    "Clinically tested and safe for newborn and infant skin with a gentle baby lotion layer.",
+    
   ],
   createdAt: "2025-03-25T07:20:12.018Z",
   updatedAt: "2025-03-25T07:22:09.103Z",
@@ -957,9 +951,7 @@ export const dummyProducts = [
   image: [oil1_image],
   description: [
     "Made with the goodness of refined sunflower and rice bran oils for balanced nutrition and great taste.",
-    "Rich in Omega-6 and Vitamin E to help maintain heart health and boost immunity.",
-    "Ideal for deep frying, sautéing, and everyday cooking with a light aroma and non-sticky texture.",
-    "Fortified with natural antioxidants to retain freshness and promote overall wellness.",
+   
   ],
   createdAt: "2025-03-25T07:23:11.018Z",
   updatedAt: "2025-03-25T07:25:19.103Z",
@@ -974,50 +966,45 @@ export const dummyProducts = [
   image: [oil2_image],
   description: [
     "Extracted from the finest mustard seeds using the traditional cold-press method to retain natural aroma and nutrients.",
-    "Rich in Omega-3 fatty acids and antioxidants that help boost immunity and support heart health.",
-    "Adds an authentic pungent flavor and golden color to traditional Indian dishes like pickles, curries, and stir-fries.",
-    "100% pure and unrefined — perfect for cooking, marination, and even hair or skin care.",
+   
+   
   ],
   createdAt: "2025-03-25T07:30:42.018Z",
   updatedAt: "2025-03-25T07:32:10.103Z",
   inStock: true,
 },
 {
-  _id: "a40",
+  _id: "a41",
   name: "Head & Shoulders Anti-Dandruff Shampoo, 650 ml",
   category: "Bath-Body",
   price: 420,
   offerPrice: 389,
   image: [shampoo1_image],
   description: [
-    "Formulated with active zinc pyrithione that effectively removes dandruff and prevents flakes from returning.",
+    
     "Gently cleanses the scalp while keeping hair soft, fresh, and pleasantly fragrant.",
-    "Provides long-lasting dandruff protection with regular use, leaving scalp itch-free and healthy.",
-    "Suitable for all hair types and safe for daily use — recommended by dermatologists worldwide.",
+    
   ],
   createdAt: "2025-03-25T07:37:45.018Z",
   updatedAt: "2025-03-25T07:39:12.103Z",
   inStock: true,
 },
 {
-  _id: "a41",
-  name: "Dove Intense Repair Shampoo, 650 ml",
+  _id: "a42",
+  name: "Dove Intense Repair Shampoo",
   category: "Bath-Body",
   price: 399,
   offerPrice: 365,
   image: [shampoo2_image],
   description: [
-    "Enriched with Keratin Actives that deeply nourish and repair damaged hair from root to tip.",
-    "Strengthens hair strands to reduce breakage and split ends, leaving it soft and smooth.",
-    "Gently cleanses scalp while restoring essential moisture for visibly healthy hair.",
-    "Suitable for daily use and all hair types — especially dry, frizzy, or chemically treated hair.",
+    "Enriched with Keratin Actives that deeply nourish and repair damaged hair from root to tip.",    
   ],
   createdAt: "2025-03-25T07:34:10.018Z",
   updatedAt: "2025-03-25T07:36:20.103Z",
   inStock: true,
 },
 {
-  _id: "a42",
+  _id: "a43",
   name: "Pantene Hair Fall Control Shampoo, 650 ml",
   category: "Bath-Body",
   price: 410,
@@ -1025,16 +1012,13 @@ export const dummyProducts = [
   image: [shampoo3_image],
   description: [
     "Enriched with Pro-Vitamin formula that strengthens hair from root to tip to reduce hair fall effectively.",
-    "Nourishes and repairs damaged strands, leaving hair visibly thicker, smoother, and more resilient.",
-    "Gently cleanses the scalp while restoring essential nutrients for long-lasting shine and softness.",
-    "Perfect for daily use and suitable for all hair types — helps reduce breakage due to hair fall.",
   ],
   createdAt: "2025-03-25T07:40:40.018Z",
   updatedAt: "2025-03-25T07:42:15.103Z",
   inStock: true,
 },
 {
-  _id: "a43",
+  _id: "a44",
   name: "Nescafé Classic Instant Coffee, 100g",
   category: "Tea-Coffee",
   price: 320,
@@ -1049,7 +1033,7 @@ export const dummyProducts = [
   inStock: true,
 },
 {
-  _id: "a44",
+  _id: "a45",
   name: "Tata Tea Agni, 500g",
   category: "Tea-Coffee",
   price: 280,
@@ -1067,7 +1051,7 @@ export const dummyProducts = [
 
 //femini 
 {
-  _id: "a45",
+  _id: "a46",
   name: "Whisper Ultra Soft Sanitary Pads, XL - 15 Pads",
   category: "Feminine-Hygiene",
   price: 180,
@@ -1082,7 +1066,7 @@ export const dummyProducts = [
   inStock: true,
 },
 {
-  _id: "a46",
+  _id: "a47",
   name: "Wishper Secure Cottony Soft Sanitary Pads, XL - 20 Pads",
   category: "Feminine-Hygiene",
   price: 170,
@@ -1097,7 +1081,7 @@ export const dummyProducts = [
   inStock: true,
 },
 {
-  _id: "a47",
+  _id: "a48",
   name: "Catch Cumin Seeds (Jeera) – 100g",
   category: "spices",
   price: 60,
@@ -1113,7 +1097,7 @@ export const dummyProducts = [
 },
 
 {
-  _id: "a48",
+  _id: "a49",
   name: "Everest Red Chilli Powder – 100g",
   category: "spices",
   price: 55,
@@ -1129,7 +1113,7 @@ export const dummyProducts = [
 },
 
 {
-  _id: "a49",
+  _id: "a50",
   name: "Aashirvaad Turmeric Powder – 100g",
   category: "spices",
   price: 50,
@@ -1144,7 +1128,7 @@ export const dummyProducts = [
   inStock: true,
 },
 {
-  _id: "a40",
+  _id: "a51",
   name: "Sunrise Cumin Powder – 100g",
   category: "spices",
   price: 58,
