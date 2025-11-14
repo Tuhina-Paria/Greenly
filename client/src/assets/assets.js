@@ -944,7 +944,7 @@ export const dummyProducts = [
 //oil&ghee
 {
   _id: "a39",
-  name: "Emami Healthy & Tasty Refined Oil, 1 Litre",
+  name: "Emami Healthy & Tasty Refined Oil",
   category: "Oil-Ghee",
   price: 190,
   offerPrice: 175,
@@ -959,7 +959,7 @@ export const dummyProducts = [
 },
 {
   _id: "a40",
-  name: "Fortune Kachi Ghani Mustard Oil, 1 Litre",
+  name: "Fortune Kachi Ghani Mustard Oil",
   category: "Oil-Ghee",
   price: 210,
   offerPrice: 195,
@@ -975,7 +975,7 @@ export const dummyProducts = [
 },
 {
   _id: "a41",
-  name: "Head & Shoulders Anti-Dandruff Shampoo, 650 ml",
+  name: "Head & Shoulders  Shampoo",
   category: "Bath-Body",
   price: 420,
   offerPrice: 389,
@@ -991,7 +991,7 @@ export const dummyProducts = [
 },
 {
   _id: "a42",
-  name: "Dove Intense Repair Shampoo",
+  name: "Dove Shampoo",
   category: "Bath-Body",
   price: 399,
   offerPrice: 365,
@@ -1005,7 +1005,7 @@ export const dummyProducts = [
 },
 {
   _id: "a43",
-  name: "Pantene Hair Fall Control Shampoo, 650 ml",
+  name: "Pantene Shampoo",
   category: "Bath-Body",
   price: 410,
   offerPrice: 379,
@@ -1019,7 +1019,7 @@ export const dummyProducts = [
 },
 {
   _id: "a44",
-  name: "Nescafé Classic Instant Coffee, 100g",
+  name: "Nescafé Classic Instant Coffee",
   category: "Tea-Coffee",
   price: 320,
   offerPrice: 299,
@@ -1052,7 +1052,7 @@ export const dummyProducts = [
 //femini 
 {
   _id: "a46",
-  name: "Whisper Ultra Soft Sanitary Pads, XL - 15 Pads",
+  name: "Whisper Sanitary Pads",
   category: "Feminine-Hygiene",
   price: 180,
   offerPrice: 165,
@@ -1067,7 +1067,7 @@ export const dummyProducts = [
 },
 {
   _id: "a47",
-  name: "Wishper Secure Cottony Soft Sanitary Pads, XL - 20 Pads",
+  name: "Wishper Secure Sanitary Pads",
   category: "Feminine-Hygiene",
   price: 170,
   offerPrice: 155,
