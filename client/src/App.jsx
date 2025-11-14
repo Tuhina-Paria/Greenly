@@ -16,6 +16,9 @@ import AllProducts from './pages/AllProducts'
 import ProductCategory from './pages/ProductCategory'
 import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
+import AddAddress from './pages/AddAddress'
+import OrderSummary from './pages/OrderSummary'
+import Payment from './pages/Payment'
 
 
 // Main App Component
@@ -54,6 +57,12 @@ const App = () => {
              <Route path='/products/:category' element={<ProductCategory/>} />
              <Route path='/products/:category/:id' element={<ProductDetails/>} />
              <Route path='/Cart' element={<Cart/>} />
+             <Route path="/add-address" element={<AddAddress />} />
+             <Route path="/order-summary" element={<OrderSummary />} />
+             <Route path="/payment" element={<Payment />} />
+
+
+
 
 
 

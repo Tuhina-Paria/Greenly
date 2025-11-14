@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { dummyProducts } from "../assets/assets.js";
+import { dummyProducts ,dummyAddress} from "../assets/assets.js";
 import {toast} from 'react-hot-toast'
 
 export const AppContext = createContext();
@@ -16,6 +16,11 @@ const { VITE_CURRENCY: currency } = import.meta.env;
   const [products, setProducts] = useState([]);
   const[cartItems,setCartItems]=useState({});
   const [searchQuery, setSearchQuery] = useState("");
+ const [savedAddress, setSavedAddress] = useState(null);
+
+  // Add selectedAddress state to track address used for order
+  const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0] || null);
+
 
 
 
@@ -88,8 +93,14 @@ useEffect(()=>{
 fetchProducts();
 },[]);
 
+// save user address
 
-  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuery,setSearchQuery,getCartAmount,getCartCount};
+const saveUserAddress = (addr) => {
+  setSavedAddress(addr);
+};
+
+
+  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuery,setSearchQuery,getCartAmount,getCartCount,savedAddress,selectedAddress,setSelectedAddress};
 
   return (
     <AppContext.Provider value={value}>
