@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
 import { useAppContext } from "../context/AppContext";
 import { dummyAddress, assets } from "../assets/assets.js";
-import StepProgress from "../components/StepProgress";
-
-
 
 const Cart = () => {
   const {
@@ -16,17 +13,14 @@ const Cart = () => {
     updateCartItem,
     navigate,
     getCartAmount,
+    selectedAddress,
+    setSelectedAddress,
   } = useAppContext();
 
   const [cartArray, setCartArray] = useState([]);
   const [addresses, setAddresses] = useState(dummyAddress);
   const [showAddress, setShowAddress] = useState(false);
-  // const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0]);
-  const { selectedAddress, setSelectedAddress } = useAppContext();
-
   const [paymentOption, setPaymentOption] = useState("COD");
-
-  // Manage step: 1=Cart, 2=Address, 3=Payment
   const [currentStep, setCurrentStep] = useState(1);
 
   const subtotal = getCartAmount();
@@ -48,10 +42,6 @@ const Cart = () => {
     if (products.length > 0 && cartItems) getCart();
   }, [products, cartItems]);
 
-  const placeOrder = async () => {
-    console.log("Order placed:", { selectedAddress, paymentOption, total });
-  };
-
   if (getCartCount() === 0)
     return (
       <div className="flex flex-col items-center justify-center py-20">
@@ -68,17 +58,8 @@ const Cart = () => {
 
   return (
     <>
-      {/* Step Progress */}
-      <div className="max-w-5xl mx-auto px-4 md:px-8 mt-20">
-        <StepProgress
-          currentStep={currentStep}
-          addressCompleted={!!selectedAddress}
-          paymentCompleted={false}
-        />
-      </div>
-
       {/* Delivery Address Summary Bar */}
-      <div className="max-w-5xl mx-auto px-4 md:px-8 mt-6 mb-6 relative">
+      <div className="max-w-5xl mx-auto px-4 md:px-8 mt-20 mb-6 relative">
         <div className="flex items-center justify-between bg-green-50 border border-green-300 rounded-md p-4">
           {selectedAddress ? (
             <>
@@ -281,12 +262,11 @@ const Cart = () => {
           </div>
 
           <button
-  onClick={() => navigate("/order-summary")}
-  className="w-full py-3 mt-6 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition shadow-md"
->
-  Place Order
-</button>
-
+            onClick={() => navigate("/order-summary")}
+            className="w-full py-3 mt-6 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition shadow-md"
+          >
+            Place Order
+          </button>
         </div>
       </div>
     </>

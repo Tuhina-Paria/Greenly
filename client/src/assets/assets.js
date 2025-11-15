@@ -1159,28 +1159,11 @@ export const dummyAddress = [
     street: "Street 123",
     city: "Main City",
     state: "New State",
-    zipcode: 123456,
+    pincode: 123456,
     country: "IN",
     phone: "1234567890",
   },
-  //bath & body
-  {
-  _id: "a40",
-  name: "Head & Shoulders Anti-Dandruff Shampoo, 650 ml",
-  category: "Bath & Body",
-  price: 420,
-  offerPrice: 389,
-  image: [shampoo1_image],
-  description: [
-    "Formulated with active zinc pyrithione that effectively removes dandruff and prevents flakes from returning.",
-    "Gently cleanses the scalp while keeping hair soft, fresh, and pleasantly fragrant.",
-    "Provides long-lasting dandruff protection with regular use, leaving scalp itch-free and healthy.",
-    "Suitable for all hair types and safe for daily use — recommended by dermatologists worldwide.",
-  ],
-  createdAt: "2025-03-25T07:37:45.018Z",
-  updatedAt: "2025-03-25T07:39:12.103Z",
-  inStock: true,
-}
+  
 
 ];
 

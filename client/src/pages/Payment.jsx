@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
-import StepProgress from "../components/StepProgress";
 
 const Payment = () => {
   const {
@@ -13,9 +12,8 @@ const Payment = () => {
 
   const navigate = useNavigate();
 
-  const [paymentMethod, setPaymentMethod] = useState("COD"); // COD or Online
+  const [paymentMethod, setPaymentMethod] = useState("COD");
 
-  // Prepare cart array
   const cartArray = Object.entries(cartItems)
     .map(([id, qty]) => {
       const product = products.find((item) => item._id === id);
@@ -31,9 +29,8 @@ const Payment = () => {
   const total = subtotal + tax;
 
   const handlePlaceOrder = () => {
-    // Here you can add your order submission logic (API call, etc)
     alert(`Order placed successfully!\nPayment Method: ${paymentMethod}`);
-    navigate("/order-complete"); // Create this route/page later
+    navigate("/order-complete");
   };
 
   if (!cartArray.length)
@@ -50,20 +47,10 @@ const Payment = () => {
       </div>
     );
 
-console.log("Payment page rendered");
-console.log({ cartItems, products, selectedAddress });
-
-
   return (
     <div className="max-w-5xl mx-auto p-4 mt-26">
-      {/* Step Progress */}
-      <div className="mb-8">
-        <StepProgress currentStep={3} />
-      </div>
-
       <h1 className="text-2xl font-semibold mb-6">Payment</h1>
 
-      {/* Delivery Address */}
       <div className="bg-green-50 border border-green-300 p-4 rounded mb-6">
         <p>
           Delivery at{" "}
@@ -72,7 +59,7 @@ console.log({ cartItems, products, selectedAddress });
         </p>
       </div>
 
-      {/* Order Summary */}
+      {/* Price Summary */}
       <div className="mb-6 text-gray-700 text-sm sm:text-base space-y-2 border border-gray-300 rounded p-4">
         <p className="flex justify-between">
           <span>Subtotal</span>
@@ -88,14 +75,14 @@ console.log({ cartItems, products, selectedAddress });
         </p>
       </div>
 
-      {/* Payment Method Selection */}
+      {/* Payment Method */}
       <div className="mb-6">
         <p className="font-medium mb-2">Select Payment Method:</p>
 
-        <label className="inline-flex items-center mr-6 cursor-pointer">
+        <label htmlFor="payment-cod" className="inline-flex items-center mr-6 cursor-pointer">
           <input
+            id="payment-cod"
             type="radio"
-            className="form-radio"
             name="paymentMethod"
             value="COD"
             checked={paymentMethod === "COD"}
@@ -104,10 +91,10 @@ console.log({ cartItems, products, selectedAddress });
           <span className="ml-2">Cash on Delivery</span>
         </label>
 
-        <label className="inline-flex items-center cursor-pointer">
+        <label htmlFor="payment-online" className="inline-flex items-center cursor-pointer">
           <input
+            id="payment-online"
             type="radio"
-            className="form-radio"
             name="paymentMethod"
             value="Online"
             checked={paymentMethod === "Online"}
@@ -117,13 +104,30 @@ console.log({ cartItems, products, selectedAddress });
         </label>
       </div>
 
-      {/* Place Order Button */}
-      <button
-        onClick={handlePlaceOrder}
-        className="w-full py-3 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition shadow-md"
-      >
-        Place Order
-      </button>
+      {/* BUTTONS (Cancel + Place Order) */}
+      <div className="flex flex-col sm:flex-row gap-4 mt-6">
+        {/* Cancel */}
+        <button
+          onClick={() => navigate("/order-summary")}
+          className="flex-1 py-3 bg-gray-300 text-gray-800 rounded-md font-medium hover:bg-gray-400 transition"
+        >
+          Cancel
+        </button>
+
+        {/* Place Order */}
+        <button
+          onClick={handlePlaceOrder}
+          disabled={!cartArray.length || !selectedAddress}
+          className={`flex-1 py-3 rounded-md font-medium shadow-md transition
+            ${
+              !cartArray.length || !selectedAddress
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-green-600 text-white hover:bg-green-700"
+            }`}
+        >
+          Place Order
+        </button>
+      </div>
     </div>
   );
 };
