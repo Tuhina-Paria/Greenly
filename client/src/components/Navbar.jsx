@@ -51,7 +51,7 @@ if(searchQuery.length>0){
         <div className="hidden sm:flex items-center gap-6">
           <NavLink className="text-sm hover:text-primary" to="/">Home</NavLink>
           <NavLink className="text-sm hover:text-primary" to="/products">All Products</NavLink>
-          <NavLink className="text-sm hover:text-primary" to="/">Contact</NavLink>
+          {/* <NavLink className="text-sm hover:text-primary" to="/">Contact</NavLink> */}
 
           {/* Cart Icon */}
           <div onClick={() => navigate("/cart")} className="relative cursor-pointer">

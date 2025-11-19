@@ -19,18 +19,24 @@ import Cart from './pages/Cart'
 import AddAddress from './pages/AddAddress'
 import OrderSummary from './pages/OrderSummary'
 import Payment from './pages/Payment'
+import MyOrders from './pages/MyOrders'
+import SellerLogin from './components/seller/SellerLogin'
+import SellerLayout from './pages/seller/SellerLayout'
+import AddProduct from './pages/seller/AddProduct'
+import ProductList from './pages/seller/ProductList'
+import Orders from './pages/seller/Orders'
 
 
 // Main App Component
 const App = () => {
-  const {showUserLogin}=useAppContext();
+  const {showUserLogin,isSeller}=useAppContext();
 
   // Get the current URL path using useLocation()
   // Example: if you are on "http://localhost:5173/seller", pathname = "/seller"
   const isSellerPath = useLocation().pathname.includes("seller");
 
   return (
-    <div>
+    <div className='text-default min-h-screen text-grey-700 bg-white'>
 
       {/* 
         If the current path includes "seller",
@@ -60,11 +66,15 @@ const App = () => {
              <Route path="/add-address" element={<AddAddress />} />
              <Route path="/order-summary" element={<OrderSummary />} />
              <Route path="/payment" element={<Payment />} />
-
-
-
-
-
+             <Route path="/my-orders" element={<MyOrders />} />
+            <Route
+  path="/seller"
+  element={isSeller ? <SellerLayout /> : <SellerLogin />}
+>
+  <Route index element={<AddProduct />} />
+  <Route path="product-list" element={<ProductList />} />
+  <Route path="orders" element={<Orders />} />
+</Route>
 
           {/* 
             Later you can add a route for your Seller/Admin Dashboard here, like:

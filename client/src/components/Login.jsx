@@ -1,9 +1,9 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
-import {assets} from '../assets/assets.js';
+import { assets } from "../assets/assets.js";
 
 const Login = () => {
-  const { setShowUserLogin } = useAppContext();
+  const { setShowUserLogin, setIsLoggedIn, setUser } = useAppContext();
 
   const [state, setState] = React.useState("login");
   const [name, setName] = React.useState("");
@@ -12,6 +12,24 @@ const Login = () => {
 
   const handleFormClick = (e) => e.stopPropagation();
 
+  // ⭐⭐ IMPORTANT: LOGIN LOGIC
+  const handleSubmit = (e) => {
+    e.preventDefault(); // prevent page reload
+
+    // Save user data
+    setUser({
+      name: name || "User",
+      email: email,
+      avatar: assets.profile_icon, // default profile image
+    });
+
+    // mark user as logged in
+    setIsLoggedIn(true);
+
+    // close the popup
+    setShowUserLogin(false);
+  };
+
   return (
     <div
       onClick={() => setShowUserLogin(false)}
@@ -19,6 +37,7 @@ const Login = () => {
     >
       <form
         onClick={handleFormClick}
+        onSubmit={handleSubmit}   // ⭐ added submit handler
         className="flex flex-col gap-4 items-start px-8 py-8 w-80 sm:w-[340px] text-gray-700 rounded-2xl shadow-2xl border border-gray-100 bg-white"
       >
         <p className="text-2xl font-semibold m-auto mb-2">
@@ -26,23 +45,20 @@ const Login = () => {
           {state === "login" ? "Login" : "Sign Up"}
         </p>
 
-        {/* ✅ show Name field only for register */}
         {state === "register" && (
           <div className="w-full relative">
-           
             <input
               onChange={(e) => setName(e.target.value)}
               value={name}
               placeholder="Full Name"
-              className="w-full px-4 py-2 text-sm rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all duration-200 "
+              className="w-full px-4 py-2 text-sm rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all duration-200"
               type="text"
               required
             />
           </div>
         )}
 
-        <div className="w-full  relative">
-         
+        <div className="w-full relative">
           <input
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -54,7 +70,6 @@ const Login = () => {
         </div>
 
         <div className="w-full relative">
-        
           <input
             onChange={(e) => setPassword(e.target.value)}
             value={password}
