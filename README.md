@@ -59,7 +59,7 @@ Added Later
 
 🏃‍♀️ Run Locally
 1️⃣ Clone the repo
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
+git clone https://github.com/Tuhina-Paria/Greenly.git
 
 2️⃣ Install dependencies
 cd client
