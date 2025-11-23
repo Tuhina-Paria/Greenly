@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from './configs/db.js';
 import 'dotenv/config';
+import userRouter from './routes/userRoute.js';
 
 
 const app=express();
@@ -28,5 +29,6 @@ app.use(cors({
 
 // test route
 app.get('/',(req,res)=>res.send('API is working'));
+app.use("/api/user", userRouter);
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
