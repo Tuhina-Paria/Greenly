@@ -25,6 +25,7 @@ import SellerLayout from './pages/seller/SellerLayout'
 import AddProduct from './pages/seller/AddProduct'
 import ProductList from './pages/seller/ProductList'
 import Orders from './pages/seller/Orders'
+import OrderSuccess from './pages/orderSuccess'
 
 
 // Main App Component
@@ -66,6 +67,8 @@ const App = () => {
              <Route path="/add-address" element={<AddAddress />} />
              <Route path="/order-summary" element={<OrderSummary />} />
              <Route path="/payment" element={<Payment />} />
+             <Route path="/order-complete" element={<OrderSuccess />} />
+
              <Route path="/my-orders" element={<MyOrders />} />
             <Route
   path="/seller"

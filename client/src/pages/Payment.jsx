@@ -3,13 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-  const {
-    cartItems,
-    products,
-    currency,
-    selectedAddress,
-  } = useAppContext();
-
+  const { cartItems, products, currency, selectedAddress } = useAppContext();
   const navigate = useNavigate();
 
   const [paymentMethod, setPaymentMethod] = useState("COD");
@@ -48,85 +42,114 @@ const Payment = () => {
     );
 
   return (
-    <div className="max-w-5xl mx-auto p-4 mt-26">
-      <h1 className="text-2xl font-semibold mb-6">Payment</h1>
+    <div className="flex justify-center px-4 mt-28">
+      <div className="w-full max-w-md">
+        {/* PAGE TITLE */}
+        <h1 className="text-4xl font-bold mb-6 text-center text-gray-700">
+          Payment
+        </h1>
 
-      <div className="bg-green-50 border border-green-300 p-4 rounded mb-6">
-        <p>
-          Delivery at{" "}
-          <span className="font-semibold">{selectedAddress.state}</span>,{" "}
-          <span className="font-semibold">{selectedAddress.pincode}</span>
-        </p>
-      </div>
+        {/* Delivery Address
+        <div className="bg-green-600 text-white p-5 rounded-xl shadow-md mb-6 text-center">
+          <h3 className="font-semibold text-lg">Delivery Address</h3>
+          <p className="text-sm opacity-90 mt-1">
+            {selectedAddress.street}, {selectedAddress.city},{" "}
+            {selectedAddress.state} - {selectedAddress.pincode}
+          </p>
+        </div> */}
 
-      {/* Price Summary */}
-      <div className="mb-6 text-gray-700 text-sm sm:text-base space-y-2 border border-gray-300 rounded p-4">
-        <p className="flex justify-between">
-          <span>Subtotal</span>
-          <span>{currency}{subtotal.toFixed(2)}</span>
-        </p>
-        <p className="flex justify-between">
-          <span>Tax (2%)</span>
-          <span>{currency}{tax.toFixed(2)}</span>
-        </p>
-        <p className="flex justify-between font-semibold pt-3 border-t mt-3 text-green-700">
-          <span>Total</span>
-          <span>{currency}{total.toFixed(2)}</span>
-        </p>
-      </div>
+        {/* Payment Method (CENTERED) */}
+        <div className="border border-gray-300 p-5 rounded-xl shadow-sm bg-white mb-8">
+          <h3 className="text-gray-800 font-semibold text-lg text-center mb-4">
+            Select Payment Method
+          </h3>
 
-      {/* Payment Method */}
-      <div className="mb-6">
-        <p className="font-medium mb-2">Select Payment Method:</p>
+          <div className="space-y-3">
+            {/* COD */}
+            <label
+              htmlFor="payment-cod"
+              className={`flex items-center gap-3 cursor-pointer p-3 rounded-lg border 
+                ${
+                  paymentMethod === "COD"
+                    ? "border-green-600 bg-green-50"
+                    : "border-gray-300"
+                }`}
+            >
+              <input
+                id="payment-cod"
+                type="radio"
+                name="paymentMethod"
+                value="COD"
+                checked={paymentMethod === "COD"}
+                onChange={() => setPaymentMethod("COD")}
+              />
+              <span className="font-medium text-gray-700">
+                Cash on Delivery
+              </span>
+            </label>
 
-        <label htmlFor="payment-cod" className="inline-flex items-center mr-6 cursor-pointer">
-          <input
-            id="payment-cod"
-            type="radio"
-            name="paymentMethod"
-            value="COD"
-            checked={paymentMethod === "COD"}
-            onChange={() => setPaymentMethod("COD")}
-          />
-          <span className="ml-2">Cash on Delivery</span>
-        </label>
+            {/* ONLINE */}
+            <label
+              htmlFor="payment-online"
+              className={`flex items-center gap-3 cursor-pointer p-3 rounded-lg border 
+                ${
+                  paymentMethod === "Online"
+                    ? "border-green-600 bg-green-50"
+                    : "border-gray-300"
+                }`}
+            >
+              <input
+                id="payment-online"
+                type="radio"
+                name="paymentMethod"
+                value="Online"
+                checked={paymentMethod === "Online"}
+                onChange={() => setPaymentMethod("Online")}
+              />
+              <span className="font-medium text-gray-700">Online Payment</span>
+            </label>
+          </div>
+        </div>
 
-        <label htmlFor="payment-online" className="inline-flex items-center cursor-pointer">
-          <input
-            id="payment-online"
-            type="radio"
-            name="paymentMethod"
-            value="Online"
-            checked={paymentMethod === "Online"}
-            onChange={() => setPaymentMethod("Online")}
-          />
-          <span className="ml-2">Online Payment</span>
-        </label>
-      </div>
+        {/* Price Summary — LAST */}
+        <div className="border border-gray-300 p-5 rounded-xl shadow-sm bg-white mb-8">
+          <h3 className="text-gray-800 font-semibold text-lg mb-4 text-center">
+            Price Details
+          </h3>
 
-      {/* BUTTONS (Cancel + Place Order) */}
-      <div className="flex flex-col sm:flex-row gap-4 mt-6">
-        {/* Cancel */}
-        <button
-          onClick={() => navigate("/order-summary")}
-          className="flex-1 py-3 bg-gray-300 text-gray-800 rounded-md font-medium hover:bg-gray-400 transition"
-        >
-          Cancel
-        </button>
+          <p className="flex justify-between text-gray-700 mb-2 text-sm">
+            <span>Subtotal</span>
+            <span>{currency}{subtotal.toFixed(2)}</span>
+          </p>
 
-        {/* Place Order */}
-        <button
-          onClick={handlePlaceOrder}
-          disabled={!cartArray.length || !selectedAddress}
-          className={`flex-1 py-3 rounded-md font-medium shadow-md transition
-            ${
-              !cartArray.length || !selectedAddress
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-green-600 text-white hover:bg-green-700"
-            }`}
-        >
-          Place Order
-        </button>
+          <p className="flex justify-between text-gray-700 mb-2 text-sm">
+            <span>Tax (2%)</span>
+            <span>{currency}{tax.toFixed(2)}</span>
+          </p>
+
+          <p className="flex justify-between border-t pt-3 mt-3 text-lg font-semibold text-green-700">
+            <span>Total</span>
+            <span>{currency}{total.toFixed(2)}</span>
+          </p>
+        </div>
+
+        {/* BUTTONS */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <button
+            onClick={() => navigate("/order-summary")}
+            className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium 
+              hover:bg-gray-300 transition shadow-sm"
+          >
+            Back
+          </button>
+
+          <button
+            onClick={handlePlaceOrder}
+            className="flex-1 py-3 rounded-xl bg-green-600 text-white font-medium hover:bg-green-700 transition shadow-md"
+          >
+            Place Order
+          </button>
+        </div>
       </div>
     </div>
   );
