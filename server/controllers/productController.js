@@ -6,7 +6,8 @@ import Product from "../models/Product.js"
 export const addProduct=async (req,res)=>{
 
     try {
-        let productData =json.parse(req.body.productData)
+        let productData = JSON.parse(req.body.productData)
+
 
         const images=req.files
 

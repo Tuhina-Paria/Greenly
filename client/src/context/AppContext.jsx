@@ -1,7 +1,13 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { dummyProducts ,dummyAddress} from "../assets/assets.js";
-import {toast} from 'react-hot-toast'
+import {toast} from 'react-hot-toast';
+import axios from 'axios';
+
+
+axios.defaults.withCredentials = true;
+
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 export const AppContext = createContext();
 
@@ -22,12 +28,33 @@ const { VITE_CURRENCY: currency } = import.meta.env;
   // Add selectedAddress state to track address used for order
   const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0] || null);
 
-
+//Fetch Seller status
+const fetchSeller=async ()=>{
+  try {
+const {data}=await axios.get("/api/seller/is-auth");
+if(data.success){
+  setIsSeller(true);
+}else{
+   setIsSeller(false);
+}
+  } catch (error) {
+    setIsSeller(false);
+  }
+}
 
 
   //fetch all products
   const fetchProducts=async()=>{
-    setProducts(dummyProducts);
+    try {
+      const {data}=await axios.get('/api/product/list')
+      if(data.success){
+        setProducts(data.products)
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
 
 //Add produtc to cart
@@ -91,6 +118,7 @@ const getCartAmount=()=>{
   }
 
 useEffect(()=>{
+  fetchSeller();
 fetchProducts();
 },[]);
 
@@ -101,7 +129,7 @@ const saveUserAddress = (addr) => {
 };
 
 
-  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuery,setSearchQuery,getCartAmount,getCartCount,savedAddress,selectedAddress,setSelectedAddress,isLoggedIn,setIsLoggedIn,};
+  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuery,setSearchQuery,getCartAmount,getCartCount,savedAddress,selectedAddress,setSelectedAddress,isLoggedIn,setIsLoggedIn,axios,fetchProducts};
 
   return (
     <AppContext.Provider value={value}>

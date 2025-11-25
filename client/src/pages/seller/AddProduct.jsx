@@ -1,68 +1,94 @@
 import React, { useState } from "react";
 import { categories, assets } from "../../assets/assets.js";
-
+import { useAppContext } from "../../context/AppContext.jsx";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
-  const [files, setFiles] = useState([]);          
-  const [name, setName] = useState("");            
-  const [price, setPrice] = useState("");          
-  const [offerPrice, setOfferPrice] = useState(""); 
-  const [description, setDescription] = useState(""); 
-  const [category, setCategory] = useState("");     
-  const [loading, setLoading] = useState(false);    
+  const [files, setFiles] = useState([]);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [offerPrice, setOfferPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const { axios } = useAppContext();
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
-    // Example: show data
-    console.log({
-      name,
-      price,
-      offerPrice,
-      description,
-      category,
-      files,
-    });
+    setLoading(true);  // Start loading before request
 
-    setLoading(false);
-  };   // <-- FIXED: Function properly closed
+    try {
+      const productData = {
+        name,
+        description: description.split("\n"),
+        category,
+        price,
+        offerPrice,
+      };
+
+      const formData = new FormData();
+      formData.append("productData", JSON.stringify(productData));
+      for (let i = 0; i < files.length; i++) {
+        if (files[i]) {
+          formData.append("images", files[i]);
+        }
+      }
+
+      const { data } = await axios.post("/api/product/add", formData);
+
+      if (data.success) {
+        toast.success(data.message);
+        // Reset form fields
+        setName("");
+        setDescription("");
+        setCategory("");
+        setPrice("");
+        setOfferPrice("");
+        setFiles([]);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+
+    setLoading(false);  // Stop loading after request
+  };
 
   return (
     <div className="no-scrollbar flex-1 h-[95vh] overflow-y-scroll flex flex-col justify-between ">
       <form onSubmit={onSubmitHandler} className="md:p-10 p-4 space-y-5 max-w-lg">
-        
         {/* Upload Images */}
-        <div >
-          <p className="text-base font-medium ">Product Image</p>
+        <div>
+          <p className="text-base font-medium">Product Image</p>
           <div className="flex flex-wrap items-center gap-3 mt-2 ">
-            {Array(4).fill("").map((_, index) => (
-              <label key={index} htmlFor={`image${index}`}>
-                <input
-                  type="file"
-                  hidden
-                  id={`image${index}`}
-                  accept="image/*"
-                  onChange={(e) => {
-                    const updated = [...files];
-                    updated[index] = e.target.files[0];
-                    setFiles(updated);
-                  }}
-                />
+            {Array(4)
+              .fill("")
+              .map((_, index) => (
+                <label key={index} htmlFor={`image${index}`}>
+                  <input
+                    type="file"
+                    hidden
+                    id={`image${index}`}
+                    accept="image/*"
+                    onChange={(e) => {
+                      const updated = [...files];
+                      updated[index] = e.target.files[0];
+                      setFiles(updated);
+                    }}
+                  />
 
-                <img
-                  className="max-w-24 cursor-pointer border rounded  border-gray-500/40"
-                  src={
-                    files[index]
-                      ? URL.createObjectURL(files[index])
-                      : assets.upload_area
-                  }
-                  alt="upload_area"
-                  width={100}
-                  height={100}
-                />
-              </label>
-            ))}
+                  <img
+                    className="max-w-24 cursor-pointer border rounded border-gray-500/40"
+                    src={files[index] ? URL.createObjectURL(files[index]) : assets.upload_area}
+                    alt="upload_area"
+                    width={100}
+                    height={100}
+                  />
+                </label>
+              ))}
           </div>
         </div>
 
@@ -98,6 +124,7 @@ const AddProduct = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
+            required
           >
             <option value="">Select Category</option>
             {categories.map((item, index) => (
@@ -119,6 +146,7 @@ const AddProduct = () => {
               onChange={(e) => setPrice(e.target.value)}
               className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
               required
+              min={0}
             />
           </div>
 
@@ -131,17 +159,24 @@ const AddProduct = () => {
               onChange={(e) => setOfferPrice(e.target.value)}
               className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
               required
+              min={0}
             />
           </div>
         </div>
 
         {/* Submit */}
-        <button className="px-8 py-2.5 bg-primary text-white font-medium rounded cursor-pointer">
+        <button
+          type="submit"
+          disabled={loading}
+          className={`px-8 py-2.5 bg-primary text-white font-medium rounded cursor-pointer ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
           {loading ? "Adding..." : "ADD"}
         </button>
       </form>
     </div>
   );
-};   
+};
 
-export default AddProduct;   
+export default AddProduct;
