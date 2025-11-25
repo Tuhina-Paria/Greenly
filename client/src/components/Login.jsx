@@ -1,33 +1,72 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
-import { assets } from "../assets/assets.js";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const { setShowUserLogin, setIsLoggedIn, setUser } = useAppContext();
+  const { setShowUserLogin, setIsLoggedIn, setUser, axios, navigate } = useAppContext();
 
-  const [state, setState] = React.useState("login");
+  const [state, setState] = React.useState("login"); // "login" or "register"
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleFormClick = (e) => e.stopPropagation();
 
-  // ⭐⭐ IMPORTANT: LOGIN LOGIC
-  const handleSubmit = (e) => {
-    e.preventDefault(); // prevent page reload
+  // Toggle handlers that also clear form inputs
+  const toggleToLogin = () => {
+    setState("login");
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
 
-    // Save user data
-    setUser({
-      name: name || "User",
-      email: email,
-      avatar: assets.profile_icon, // default profile image
-    });
+  const toggleToRegister = () => {
+    setState("register");
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
 
-    // mark user as logged in
-    setIsLoggedIn(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    // close the popup
-    setShowUserLogin(false);
+    try {
+      const payload = state === "register"
+        ? { name, email, password }
+        : { email, password };
+
+      const { data } = await axios.post(`/api/user/${state}`, payload);
+
+      if (data.success) {
+        setUser(data.user);
+        setIsLoggedIn(true);
+        setShowUserLogin(false);
+        navigate("/");
+        toast.success(`${state === "login" ? "Logged in" : "Registered"} successfully!`);
+
+        // Clear form fields after success
+        setName("");
+        setEmail("");
+        setPassword("");
+      } else {
+        // If login fails because user does not exist, suggest signup
+        if (state === "login" && data.message === "User does not exist") {
+          toast.error("User not found. Please sign up.");
+          setState("register");  // Switch to signup form
+          setName("");
+          setEmail("");
+          setPassword("");
+        } else {
+          toast.error(data.message);
+        }
+      }
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+      toast.error(error.response.data.message);
+    } else {
+      toast.error(error.message);
+    }
+    }
   };
 
   return (
@@ -37,7 +76,7 @@ const Login = () => {
     >
       <form
         onClick={handleFormClick}
-        onSubmit={handleSubmit}   // ⭐ added submit handler
+        onSubmit={handleSubmit}
         className="flex flex-col gap-4 items-start px-8 py-8 w-80 sm:w-[340px] text-gray-700 rounded-2xl shadow-2xl border border-gray-100 bg-white"
       >
         <p className="text-2xl font-semibold m-auto mb-2">
@@ -92,7 +131,7 @@ const Login = () => {
             <>
               Already have an account?{" "}
               <span
-                onClick={() => setState("login")}
+                onClick={toggleToLogin}
                 className="text-primary cursor-pointer font-medium hover:underline"
               >
                 Login
@@ -102,7 +141,7 @@ const Login = () => {
             <>
               Don’t have an account?{" "}
               <span
-                onClick={() => setState("register")}
+                onClick={toggleToRegister}
                 className="text-primary cursor-pointer font-medium hover:underline"
               >
                 Sign Up

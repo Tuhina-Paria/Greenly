@@ -5,15 +5,27 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { assets } from "../assets/assets.js";
 import { useAppContext } from "../context/AppContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false); // for mobile expanding search
-  const { user, setUser, setShowUserLogin, navigate ,setSearchQuery,searchQuery,getCartCount} = useAppContext();
+  const { user, setUser, setShowUserLogin, navigate ,setSearchQuery,searchQuery,getCartCount,axios} = useAppContext();
 
   const logout = async () => {
-    setUser(null);
+    try {
+      const {data}=await axios.post('/api/user/logout')
+      if(data.success){
+        toast.success(data.message)
+        setUser(null);
     navigate("/");
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+    
   };
 
 

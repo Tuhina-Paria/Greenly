@@ -17,9 +17,10 @@ const authUser = async (req, res, next) => {
 
     // Attach userId to req object
     if(tokendecode.id){
-        req.body.userId=tokendecode.id;
+        req.userId=tokendecode.id;
     }else{
-        return res,json({success:false,message:"Not Authorizes"});
+        return res.status(401).json({ success: false, message: "Not Authorized" });
+
     }
 
 

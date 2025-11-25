@@ -23,12 +23,13 @@ const allowedOrigin = "http://localhost:5173"; // your frontend URL
 
 
 // Middleware
-app.use(express.json());
-app.use(cookieParser());
 app.use(cors({
   origin: allowedOrigin,
   credentials: true
 }));
+
+app.use(cookieParser());
+app.use(express.json());
 
 
 

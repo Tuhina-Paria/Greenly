@@ -42,6 +42,21 @@ if(data.success){
   }
 }
 
+//Fetch User Auth Status,User Data and Cart Items
+const fetchUser =async ()=>{
+  try {
+    const {data}=await axios.get('/api/user/is-auth')
+    if(data.success){
+      setUser(data.user)
+      setCartItems(data.user.cartItems)
+    }
+  } catch (error) {
+    setUser(null);
+  }
+}
+
+
+
 
   //fetch all products
   const fetchProducts=async()=>{
@@ -118,6 +133,7 @@ const getCartAmount=()=>{
   }
 
 useEffect(()=>{
+  fetchUser();
   fetchSeller();
 fetchProducts();
 },[]);
@@ -129,7 +145,7 @@ const saveUserAddress = (addr) => {
 };
 
 
-  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuery,setSearchQuery,getCartAmount,getCartCount,savedAddress,selectedAddress,setSelectedAddress,isLoggedIn,setIsLoggedIn,axios,fetchProducts};
+  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuery,setSearchQuery,getCartAmount,getCartCount,savedAddress,selectedAddress,setSelectedAddress,isLoggedIn,setIsLoggedIn,axios,fetchProducts,fetchUser};
 
   return (
     <AppContext.Provider value={value}>
