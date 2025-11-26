@@ -17,7 +17,6 @@ import ProductCategory from './pages/ProductCategory'
 import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
 import AddAddress from './pages/AddAddress'
-import OrderSummary from './pages/OrderSummary'
 import Payment from './pages/Payment'
 import MyOrders from './pages/MyOrders'
 import SellerLogin from './components/seller/SellerLogin'
@@ -26,6 +25,7 @@ import AddProduct from './pages/seller/AddProduct'
 import ProductList from './pages/seller/ProductList'
 import Orders from './pages/seller/Orders'
 import OrderSuccess from './pages/orderSuccess'
+import EditAddress from './pages/EditAddress'
 
 
 // Main App Component
@@ -65,9 +65,9 @@ const App = () => {
              <Route path='/products/:category/:id' element={<ProductDetails/>} />
              <Route path='/Cart' element={<Cart/>} />
              <Route path="/add-address" element={<AddAddress />} />
-             <Route path="/order-summary" element={<OrderSummary />} />
              <Route path="/payment" element={<Payment />} />
              <Route path="/order-complete" element={<OrderSuccess />} />
+             <Route path="/edit-address/:id" element={<EditAddress />} />
 
              <Route path="/my-orders" element={<MyOrders />} />
             <Route

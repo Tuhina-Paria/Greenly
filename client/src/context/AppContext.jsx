@@ -6,7 +6,6 @@ import axios from 'axios';
 
 
 axios.defaults.withCredentials = true;
-
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 export const AppContext = createContext();
@@ -26,7 +25,7 @@ const { VITE_CURRENCY: currency } = import.meta.env;
  const [savedAddress, setSavedAddress] = useState(null);
 
   // Add selectedAddress state to track address used for order
-  const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0] || null);
+  const [selectedAddress, setSelectedAddress] = useState(null);
 
 //Fetch Seller status
 const fetchSeller=async ()=>{
@@ -119,24 +118,49 @@ const getCartCount=()=>{
 }
 
 //get cart total Amount
-
-const getCartAmount=()=>{
-  let totalAmount=0;
-    for(const items in cartItems){
-   let itemInfo=products.find((product)=>product._id ===items)
-   if(cartItems[items]>0){
-    totalAmount +=itemInfo.offerPrice *cartItems[items]
-   }
+const getCartAmount = () => {
+  let totalAmount = 0;
+  for (const items in cartItems) {
+    let itemInfo = products.find((product) => product._id === items);
+    if (itemInfo && cartItems[items] > 0) {
+      totalAmount += itemInfo.offerPrice * cartItems[items];
     }
-   return Math.floor(totalAmount*100)/100;
-
   }
+  return Math.floor(totalAmount * 100) / 100;
+};
+
 
 useEffect(()=>{
   fetchUser();
   fetchSeller();
 fetchProducts();
 },[]);
+
+
+
+//Update Database Cart Items
+
+useEffect(()=>{
+  const updateCart=async ()=>{
+    try {
+      const {data}=await axios.post('/api/cart/update',{cartItems})
+      if(!data.success){
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+   
+  }
+  
+  if(user){
+    updateCart();
+  }
+},[cartItems])
+
+
+
+
 
 // save user address
 

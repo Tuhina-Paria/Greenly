@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
+import toast from "react-hot-toast";
 
 const AddAddress = () => {
-  const { navigate } = useAppContext();
+  const { navigate, axios, user } = useAppContext();
 
   const [address, setAddress] = useState({
     fullName: "",
+    email:"",
     phone: "",
     street: "",
     city: "",
@@ -18,18 +20,41 @@ const AddAddress = () => {
     setAddress({ ...address, [e.target.name]: e.target.value });
   };
 
-  const saveAddress = () => {
+  // SAVE ADDRESS TO DATABASE
+  const saveAddress = async () => {
     const empty = Object.values(address).some((v) => v.trim() === "");
     if (empty) {
-      alert("All fields are required!");
+      toast.error("All fields are required!");
       return;
     }
-    console.log("New Address Saved:", address);
-    navigate("/cart");
+
+    try {
+      const { data } = await axios.post("/api/address/add", {
+  address,
+  userId: user._id,
+});
+
+      if (data.success) {
+        toast.success(data.message);
+        navigate("/cart");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
+
+  // IF USER NOT LOGGED IN → REDIRECT
+  useEffect(() => {
+    if (!user) {
+      navigate("/cart");
+    }
+  }, [user, navigate]);
 
   const fields = [
     { name: "fullName", placeholder: "Full Name" },
+    { name: "email", placeholder: "Email" },
     { name: "phone", placeholder: "Phone Number" },
     { name: "street", placeholder: "House No, Area, Street" },
     { name: "city", placeholder: "City" },
@@ -59,12 +84,6 @@ const AddAddress = () => {
       </div>
 
       <div className="flex justify-between mt-5 gap-3">
-        <button
-          onClick={saveAddress}
-          className="flex-1 bg-green-600 text-white py-2 rounded-md text-sm font-medium hover:bg-green-700 hover:shadow-md transition-all duration-200"
-        >
-          Save Address
-        </button>
 
         <button
           onClick={() => navigate("/cart")}
@@ -72,6 +91,15 @@ const AddAddress = () => {
         >
           Cancel
         </button>
+
+        <button
+          onClick={saveAddress}
+          className="flex-1 bg-green-600 text-white py-2 rounded-md text-sm font-medium hover:bg-green-700 hover:shadow-md transition-all duration-200"
+        >
+          Save Address
+        </button>
+
+        
       </div>
     </div>
   );

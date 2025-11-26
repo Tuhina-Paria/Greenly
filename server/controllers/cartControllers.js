@@ -1,9 +1,13 @@
-import User from "../models/User.js";
+import express from 'express';
+import authUser from '../middlewares/authUser.js';
+import User from '../models/User.js';
+ 
 
 // Update Cart Data : /api/cart/update
 export const updateCart = async (req, res) => {
   try {
-    const { userId, cartItems } = req.body;
+     const userId = req.userId;    
+    const {  cartItems } = req.body;
 
     await User.findByIdAndUpdate(userId, { cartItems });
 

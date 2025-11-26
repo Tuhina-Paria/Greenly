@@ -136,7 +136,7 @@ const Payment = () => {
         {/* BUTTONS */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button
-            onClick={() => navigate("/order-summary")}
+            onClick={() => navigate("/cart")}
             className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium 
               hover:bg-gray-300 transition shadow-sm"
           >
