@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { useAppContext } from '../../context/AppContext';
 import { assets, dummyOrders } from '../../assets/assets';
+import toast from 'react-hot-toast';
 
 const Orders = () => {
-  const{currency}=useAppContext();
+  const{currency,axios}=useAppContext();
  const [orders, setOrders] = useState([]);
 
 
   const fetchOrders=async()=>{
-    setOrders(dummyOrders);
+  try {
+    const {data}=await axios.get('/api/order/seller');
+    if(data.success){
+        setOrders(data.orders)
+    }else{
+        toast.error(data.message)
+    }
+  } catch (error) {
+      toast.error(error.message)
+  }
   };
 
  useEffect(() => {
@@ -17,7 +27,7 @@ const Orders = () => {
 
   return (
   <div className="no-scrollbar flex-1 h-[95vh] overflow-y-scroll">
-        <div className="md:p-10 p-4 space-y-4">
+        <div className="md:p-10 p-4 space-y-2">
             <h2 className="text-lg font-medium">Orders List</h2>
             {orders.map((order, index) => (
                 <div key={index} className="flex md:flex-row flex-col md:items-center gap-5 justify-between p-5 max-w-4xl rounded-md border border-gray-300"

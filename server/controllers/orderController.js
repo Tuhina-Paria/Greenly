@@ -1,6 +1,14 @@
 import Order from "../models/Order.js";
 import Product from "../models/Product.js";
 
+// Calculate delivery time (add 4 hours)
+const calculateDeliveryTime = () => {
+  return new Date(Date.now() + 4 * 60 * 60 * 1000);
+};
+
+
+
+
 // Place Order (COD) : /api/order/cod
 export const placeOrderCOD = async (req, res) => {
   try {
@@ -24,6 +32,9 @@ export const placeOrderCOD = async (req, res) => {
     // Add tax 2%
     amount += Math.floor(amount * 0.02);
 
+    // DELIVERY TIME
+    const deliveryBy = calculateDeliveryTime();
+
     // Create order
     await Order.create({
       userId,
@@ -32,6 +43,7 @@ export const placeOrderCOD = async (req, res) => {
       address,
       paymentType: "COD",
       isPaid: false,
+      deliveryBy,
     });
 
     return res.json({ success: true, message: "Order Placed Successfully" });
@@ -43,7 +55,7 @@ export const placeOrderCOD = async (req, res) => {
 // Get orders of logged in user : /api/order/user
 export const getUserOrders = async (req, res) => {
   try {
-    const { userId } = req.body;
+    const  userId = req.userId;
 
     const orders = await Order.find({
       userId,

@@ -169,7 +169,7 @@ const saveUserAddress = (addr) => {
 };
 
 
-  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuery,setSearchQuery,getCartAmount,getCartCount,savedAddress,selectedAddress,setSelectedAddress,isLoggedIn,setIsLoggedIn,axios,fetchProducts,fetchUser};
+  const value = { navigate, user, setUser, isSeller, setIsSeller,showUserLogin,setShowUserLogin,products ,currency,addToCart,updateCartItem,removeFromCart,cartItems,setCartItems,searchQuery,setSearchQuery,getCartAmount,getCartCount,savedAddress,selectedAddress,setSelectedAddress,isLoggedIn,setIsLoggedIn,axios,fetchProducts,fetchUser,setCartItems};
 
   return (
     <AppContext.Provider value={value}>

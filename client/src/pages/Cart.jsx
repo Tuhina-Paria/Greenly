@@ -16,7 +16,8 @@ const Cart = () => {
     navigate,
     getCartAmount,
     axios,
-    user
+    user,
+    setCartItems
   } = useAppContext();
 
   const [cartArray, setCartArray] = useState([]);
@@ -55,6 +56,7 @@ const getUserAddress=async()=>{
     }
   } catch (error) {
     toast.error(error.message);
+    
   }
 }
 
@@ -62,13 +64,32 @@ const getUserAddress=async()=>{
     if (products.length > 0) getCart();
   }, [products, cartItems]);
 
-  const placeOrder = () => {
+  const placeOrder = async () => {
     // For demo: just alert order details
-    alert(
-      `Order placed!\nAddress: ${selectedAddress.street}, ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.country}\nPayment Method: ${paymentOption}\nTotal: ${currency}${total.toFixed(
-        2
-      )}`
-    );
+    try {
+      if(!selectedAddress){
+        return toast.error("Please Select an Address")
+      }
+      //Place order with COD
+      if(paymentOption === "COD"){
+        const {data}=await axios.post("/api/order/cod",{
+          userId:user._id,
+          items:cartArray.map(item=>({product:item._id,quantity:item.quantity})),
+          address:selectedAddress._id
+        })
+        if(data.success){
+          toast.success(data.message)
+          setCartItems({});
+          navigate('/order-complete')
+          
+        }else{
+          toast.error(data.message)
+        }
+      }
+    } catch (error) {
+          toast.error(error.message)
+      
+    }
     // TODO: Replace with API call to backend here to place order
   };
 

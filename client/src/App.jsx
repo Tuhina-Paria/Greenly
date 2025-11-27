@@ -26,6 +26,7 @@ import ProductList from './pages/seller/ProductList'
 import Orders from './pages/seller/Orders'
 import OrderSuccess from './pages/orderSuccess'
 import EditAddress from './pages/EditAddress'
+import OrderDetails from './pages/OrderDetails'
 
 
 // Main App Component
@@ -68,6 +69,8 @@ const App = () => {
              <Route path="/payment" element={<Payment />} />
              <Route path="/order-complete" element={<OrderSuccess />} />
              <Route path="/edit-address/:id" element={<EditAddress />} />
+             <Route path="/order/:orderId" element={<OrderDetails />} />
+
 
              <Route path="/my-orders" element={<MyOrders />} />
             <Route
