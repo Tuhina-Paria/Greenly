@@ -45,9 +45,9 @@ const MyOrders = () => {
             <p>
               <strong>Order ID:</strong> {order._id}
             </p>
-            <p>
+            {/* <p>
               <strong>Payment:</strong> {order.paymentType}
-            </p>
+            </p> */}
             <p>
               <strong>Total:</strong> {currency}
               {order.amount}
@@ -78,7 +78,7 @@ const MyOrders = () => {
                 {/* Status Box */}
                 <div className="bg-white p-3 rounded-xl shadow mb-3 text-sm">
                   <p>Quantity: {item.quantity}</p>
-                  <p>Status: {order.status}</p>
+                  {/* <p>Status: {order.status}</p> */}
                   <p>
                     Date: {new Date(order.createdAt).toLocaleDateString()}
                   </p>
@@ -97,16 +97,16 @@ const MyOrders = () => {
                     <h2 className="text-lg font-semibold text-gray-900">
                       {item.product.name}
                     </h2>
-                    <p className="text-gray-500 text-sm">
+                    {/* <p className="text-gray-500 text-sm">
                       Category: {item.product.category}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
 
                 {/* Center details */}
                 <div className="text-gray-700 text-sm">
                   <p>Quantity: {item.quantity}</p>
-                  <p>Status: {order.status}</p>
+                  {/* <p>Status: {order.status}</p> */}
                   <p>
                     Date: {new Date(order.createdAt).toLocaleDateString()}
                   </p>

@@ -86,3 +86,23 @@ export const getAllOrders = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+
+// Get Single Order : /api/order/:orderId
+export const getOrderById = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+
+    const order = await Order.findById(orderId)
+      .populate("items.product")
+      .populate("address");
+
+    if (!order) {
+      return res.json({ success: false, message: "Order not found" });
+    }
+
+    res.json({ success: true, order });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
