@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { categories, assets } from "../../assets/assets.js";
+import { categories, exploreCategories, assets } from "../../assets/assets.js";
 import { useAppContext } from "../../context/AppContext.jsx";
 import toast from "react-hot-toast";
 
@@ -14,10 +14,18 @@ const AddProduct = () => {
 
   const { axios } = useAppContext();
 
+  // Merge categories and exploreCategories without duplicates by 'path'
+  const mergedCategories = [...categories];
+  exploreCategories.forEach((exploreCat) => {
+    if (!mergedCategories.some((cat) => cat.path === exploreCat.path)) {
+      mergedCategories.push(exploreCat);
+    }
+  });
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
-    setLoading(true);  // Start loading before request
+    setLoading(true); // Start loading before request
 
     try {
       const productData = {
@@ -54,7 +62,7 @@ const AddProduct = () => {
       toast.error(error.message);
     }
 
-    setLoading(false);  // Stop loading after request
+    setLoading(false); // Stop loading after request
   };
 
   return (
@@ -127,9 +135,9 @@ const AddProduct = () => {
             required
           >
             <option value="">Select Category</option>
-            {categories.map((item, index) => (
+            {mergedCategories.map((item, index) => (
               <option key={index} value={item.path}>
-                {item.path}
+                {item.text || item.path}
               </option>
             ))}
           </select>

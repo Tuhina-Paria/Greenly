@@ -2,6 +2,8 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+import cloudinary from "cloudinary";
+
 // REGISTER USER: POST /api/user/register
 export const register = async (req, res) => {
   try {
@@ -169,3 +171,34 @@ export const logout=async(req,res)=>{
     });
   }
 }
+
+
+
+export const updateProfile = async (req, res) => {
+  try {
+    const { name, email, phone } = req.body;
+
+    let imageUrl = null;
+
+    // If image uploaded
+    if (req.file) {
+      const upload = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = upload.secure_url;
+    }
+
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        name,
+        email,
+        phone,
+        ...(imageUrl && { image: imageUrl }),
+      },
+      { new: true }
+    );
+
+    return res.json({ success: true, user });
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+  }
+};

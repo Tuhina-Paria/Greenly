@@ -83,6 +83,9 @@ if(searchQuery.length>0){
             <div className="relative group">
               <img src={assets.profile_icon} alt="profile_icon" className="w-9 cursor-pointer" />
               <ul className="hidden group-hover:block absolute top-10 right-0 bg-white shadow border border-gray-200 py-2.5 w-32 rounded-md text-sm z-40">
+                                <li onClick={() => navigate("/profile")} className="p-1.5 pl-3 hover:bg-primary/10 cursor-pointer">
+                  Profile
+                </li>
                 <li onClick={() => navigate("/my-orders")} className="p-1.5 pl-3 hover:bg-primary/10 cursor-pointer">
                   My Orders
                 </li>
@@ -141,8 +144,8 @@ if(searchQuery.length>0){
         <div className="sm:hidden flex flex-col items-start gap-3 px-5 py-4 border-t border-gray-200 bg-white shadow-md text-sm">
           <NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink>
           <NavLink to="/products" onClick={() => setOpen(false)}>All Products</NavLink>
+          {user && <NavLink to="/profile" onClick={() => setOpen(false)}>Profile</NavLink>}
           {user && <NavLink to="/my-orders" onClick={() => setOpen(false)}>My Orders</NavLink>}
-          <NavLink to="/" onClick={() => setOpen(false)}>Contact</NavLink>
 
           {!user ? (
             <button
