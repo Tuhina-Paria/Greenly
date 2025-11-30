@@ -1,11 +1,6 @@
 import Order from "../models/Order.js";
 import Product from "../models/Product.js";
-
-// Calculate delivery time (add 4 hours)
-const calculateDeliveryTime = () => {
-  return new Date(Date.now() + 4 * 60 * 60 * 1000);
-};
-
+import Stripe from "stripe";
 
 
 
@@ -32,8 +27,7 @@ export const placeOrderCOD = async (req, res) => {
     // Add tax 2%
     amount += Math.floor(amount * 0.02);
 
-    // DELIVERY TIME
-    const deliveryBy = calculateDeliveryTime();
+    
 
     // Create order
     await Order.create({
@@ -43,7 +37,6 @@ export const placeOrderCOD = async (req, res) => {
       address,
       paymentType: "COD",
       isPaid: false,
-      deliveryBy,
     });
 
     return res.json({ success: true, message: "Order Placed Successfully" });
@@ -51,6 +44,92 @@ export const placeOrderCOD = async (req, res) => {
     return res.json({ success: false, message: error.message });
   }
 };
+
+
+// Place Order Stripe: /api/order/stripe
+export const placeOrderStripe = async (req, res) => {
+  try {
+    const { userId, items, address } = req.body;
+    const {origin}=req.headers;
+
+    if (!address || !items || items.length === 0) {
+      return res.json({ success: false, message: "Invalid data" });
+    }
+
+    let productData=[];
+    // Calculate amount (Correct way)
+    let amount = 0;
+
+    for (const item of items) {
+      const product = await Product.findById(item.product);
+productData.push({
+  name:product.name,
+  price:product.offerPrice,
+  quantity:item.quantity,
+});
+
+      if (!product) {
+        return res.json({ success: false, message: "Product not found" });
+      }
+      amount += product.offerPrice * item.quantity;
+    }
+
+    // Add tax 2%
+    amount += Math.floor(amount * 0.02);
+
+    
+
+    // Create order
+    const order=await Order.create({
+      userId,
+      items,
+      amount,
+      address,
+      paymentType: "Online",
+      isPaid: false,
+    });
+
+    //Stripe Gateway Initialize
+const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+
+    //Create line items for stripe
+    const line_items=productData.map((item)=>{
+      return {
+        price_data:{
+          currency:'usd',
+          product_data:{
+            name:item.name,
+          },
+          unit_amount: Math.floor(item.price + item.price * 0.02) * 100
+
+        },
+        quantity:item.quantity,
+      }
+    })
+
+// create session
+const session=await stripeInstance.checkout.sessions.create({
+  line_items,
+  mode:"payment",
+  success_url:`${origin}/loader?next=order-complete`,
+  cancel_url:`${origin}/cart`,
+  metadata:{
+    orderId:order._id.toString(),
+    userId,
+  }
+})
+
+    return res.json({ success: true,url:session.url});
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+
+
+
+
 
 // Get orders of logged in user : /api/order/user
 export const getUserOrders = async (req, res) => {

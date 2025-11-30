@@ -27,6 +27,7 @@ import Orders from './pages/seller/Orders'
 import OrderSuccess from './pages/orderSuccess'
 import EditAddress from './pages/EditAddress'
 import OrderDetails from './pages/OrderDetails'
+import Loading from './components/Loading'
 
 
 // Main App Component
@@ -73,6 +74,8 @@ const App = () => {
 
 
              <Route path="/my-orders" element={<MyOrders />} />
+             <Route path="/loader" element={<Loading />} />
+
             <Route
   path="/seller"
   element={isSeller ? <SellerLayout /> : <SellerLogin />}

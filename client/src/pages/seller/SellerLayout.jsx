@@ -46,13 +46,13 @@ try {
 
           <Link to="/" className="flex items-center gap-1">
             <img src="/favicon.svg" alt="Logo" className="h-8 sm:h-10" />
-            <span className="text-lg sm:text-xl font-bold text-black">Greenly</span>
+            <span className="text-lg sm:text-xl font-bold text-black">reenly</span>
           </Link>
         </div>
 
         {/* RIGHT PROFILE AREA */}
         <div className="flex items-center gap-5 text-gray-500">
-          <p>Hi! Admin</p> 
+          {/* <p>Hi! Admin</p>  */}
           <button onClick={logout} className="border rounded-full text-sm px-4 py-1 bg-primary hover:bg-primary-dull">
             Logout
           </button>

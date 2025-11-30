@@ -1,83 +1,93 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
-
-// Confetti animation library
 import confetti from "canvas-confetti";
 
 const OrderSuccess = () => {
   const navigate = useNavigate();
-  const { selectedAddress } = useAppContext();
 
-  // Random order ID
   const orderId = "ORD" + Math.floor(Math.random() * 900000 + 100000);
 
-  // Trigger confetti on mount
   useEffect(() => {
     confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 }
+      particleCount: 120,
+      spread: 60,
+      origin: { y: 0.7 },
     });
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50 p-4 mt-20">
+    <div className="min-h-screen flex items-center justify-center bg-green-50 px-4 mt-18">
 
-      <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-10 max-w-lg w-full text-center animate-fadeInUp">
+      <div
+        className="
+          bg-white rounded-3xl shadow-xl
+          w-full max-w-sm   /* PERFECT FOR MOBILE */
+          sm:max-w-md       /* TABLET */
+          lg:max-w-lg       /* LARGE SCREEN */
+          py-10 px-6 sm:px-10
+          text-center
+        "
+      >
 
-        {/* Animated Tick */}
-        <div className="flex justify-center mb-4">
-          <div className="w-24 h-24 bg-green-100 border border-green-300 rounded-full flex items-center justify-center animate-pingOnce">
-            <span className="text-6xl text-green-600 animate-scaleIn">✓</span>
+        {/* Success Icon */}
+        <div className="flex justify-center mb-5">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-green-100 border border-green-300 rounded-full flex items-center justify-center shadow-md">
+            <span className="text-5xl sm:text-6xl text-green-600 font-bold">✓</span>
           </div>
         </div>
 
-        {/* Heading */}
-        <h1 className="text-2xl font-semibold text-green-700 mb-2 animate-fadeIn">
-          Thank You!
+        {/* Title */}
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-700">
+          Order Confirmed!
         </h1>
 
-        <p className="text-gray-600 mb-6 animate-fadeInDelay">
-          Your order has been placed successfully.
+        {/* Subtitle */}
+        <p className="text-gray-700 mt-2 text-sm sm:text-base">
+          Thank you for your purchase.
         </p>
 
-        {/* Order Details Card */}
-        <div className="bg-green-50 border border-green-300 rounded-lg p-4 mb-6 text-left animate-fadeInDelay2">
-          <p className="mb-2">
-            <span className="font-medium">Order ID: </span>
-            <span className="text-green-700">{orderId}</span>
-          </p>
+       
 
-          {selectedAddress && (
-            <p className="text-sm text-gray-700 leading-5">
-              <span className="font-medium">Deliver To: </span>
-              {selectedAddress.street}, {selectedAddress.city},{" "}
-              {selectedAddress.state} - {selectedAddress.pincode}
-            </p>
-          )}
-        </div>
+        {/* Delivery line */}
+        <p className="text-green-900 mt-4 text-sm sm:text-base font-semibold">
+          Your items will be delivered soon.
+        </p>
 
         {/* Buttons */}
-        <div className="flex flex-col gap-3 animate-fadeInDelay3">
+        <div className="flex flex-col items-center gap-3 mt-8 w-full">
+
           <button
             onClick={() => navigate("/")}
-            className="py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition"
+            className="
+              w-full sm:w-auto
+              px-6 py-3
+              bg-green-600 text-white
+              rounded-xl
+              text-sm sm:text-base font-semibold
+              hover:bg-green-700 transition
+            "
           >
             Continue Shopping
           </button>
 
           <button
-            // onClick={() => navigate(`/order/${orderId}`)}
-            onClick={() => navigate('/my-orders')}
-            className="py-3 bg-gray-100 text-gray-800 border border-gray-300 rounded-lg font-medium hover:bg-gray-200 transition"
+            onClick={() => navigate("/my-orders")}
+            className="
+              w-full sm:w-auto
+              px-6 py-3
+              bg-gray-100 text-gray-800
+              border border-gray-300
+              rounded-xl
+              text-sm sm:text-base font-semibold
+              hover:bg-gray-200 transition
+            "
           >
             View My Orders
           </button>
         </div>
 
       </div>
-
     </div>
   );
 };
