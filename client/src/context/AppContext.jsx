@@ -70,18 +70,31 @@ const fetchUser =async ()=>{
       toast.error(error.message)
     }
   }
+// Add product to cart
+const addToCart = async (itemId) => {
 
-//Add produtc to cart
-const addToCart=async(itemId)=>{
-  let cardData=structuredClone(cartItems);
-  if(cardData[itemId]){
-    cardData[itemId]
-+=1; }else{
-  cardData[itemId]=1;
-}
-setCartItems(cardData);
-toast.success("Added to Cart")
-}
+  // 1. Find the product details
+  const product = products.find(p => p._id === itemId);
+
+  // 2. Check stock
+  if (!product?.inStock) {
+    toast.error("This product is out of stock.");
+    return; // ❌ stop here
+  }
+
+  // 3. Add to cart normally
+  let cartData = structuredClone(cartItems);
+
+  if (cartData[itemId]) {
+    cartData[itemId] += 1;
+  } else {
+    cartData[itemId] = 1;
+  }
+
+  setCartItems(cartData);
+  toast.success("Added to Cart");
+};
+
 
 //update cart item Quantity
 const updateCartItem=(itemId,quantity)=>{

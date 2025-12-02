@@ -1,6 +1,7 @@
 import Order from "../models/Order.js";
 import Product from "../models/Product.js";
 import Stripe from "stripe";
+import User from "../models/User.js"
 
 
 
@@ -125,6 +126,70 @@ const session=await stripeInstance.checkout.sessions.create({
     return res.json({ success: false, message: error.message });
   }
 };
+
+//Stripe Webhook to Verify Payments Action :/stripe
+export const stripeWebhooks=async (req,res)=>{
+    //stripe gateway initialize
+    const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+    const sig=requestAnimationFrame.headres["stripe-signature"];
+    let event;
+
+    try {
+      event =stripeInstance.webhooks.constructEvent(
+      request.body,
+      sig,
+      process.env.STRIPE_WEBHOOK_SECRET
+      );
+    } catch (error) {
+      Response.status(400).send(`Webhook Error:${error.message}`)
+    }
+
+    //Handle the event
+    switch (event.type) {
+      case "payment_intent.succeeded":{
+        const paymentIntent=event.data.object;
+        const paymentIntentId =paymentIntent.id;
+
+        //Getting Session Metadata
+        const session=await stripeInstance.checkout.sessions.list({
+         payment_intent:paymentIntentId,
+        })
+
+        const {orderId,userId}=session.data[0].metadata;
+
+        //Mark payment as paid
+        await Order.findByIdAndUpdate(orderId,{isPaid:true})
+        //clear user cart
+        await User.findByIdAndUpdate(userId,{cartItems:{}});
+         break;
+    
+      }
+       
+      case "payment_intent.payment_failed":{
+        const paymentIntent=event.data.object;
+        const paymentIntentId =paymentIntent.id;
+
+        //Getting Session Metadata
+        const session=await stripeInstance.checkout.sessions.list({
+         payment_intent:paymentIntentId,
+        })
+
+        const {orderId}=session.data[0].metadata;
+        await Order.findByIdAndDelete(orderId);
+         break;
+      }
+       
+      default:
+        console.error(`Unhandle event type ${event.type}`)
+        break;
+    }
+    Response.json({received:true});
+}
+
+
+
+
 
 
 

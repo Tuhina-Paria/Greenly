@@ -10,6 +10,7 @@ import productRouter from './routes/productRoute.js';
 import cartRouter from './routes/cartRoute.js';
 import addressRouter from './routes/addressRoute.js';
 import orderRouter from './routes/orderRoute.js';
+import { stripeWebhooks } from './controllers/orderController.js';
 
 
 const app=express();
@@ -19,8 +20,9 @@ await connectDB()
 await connectCloudinary()
 
 // allow multiple origins
-const allowedOrigin = "http://localhost:5173"; // your frontend URL
+const allowedOrigin = ["http://localhost:5173"]; // your frontend URL
 
+app.post('/stripe',express.raw({type:'application/json'}),stripeWebhooks)
 
 // Middleware
 app.use(cors({
