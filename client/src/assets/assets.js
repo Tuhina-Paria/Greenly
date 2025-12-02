@@ -77,6 +77,7 @@ import mango_banner from './mango_banner.jpg';
 import main_banner4 from './main_banner4.png';
 import main_banner5 from './main_banner5.png';
 import chocolate_image from './chocolate.jpg';
+import tea_coffee_image from './tea_coffee.jpg';
 import oil_ghee_image from './oil_ghee_image.jpg';
 import chocolates_sweets_image from './chocolates_sweets.jpg';
 import main_banner6 from './main_banner6.png';
@@ -165,6 +166,7 @@ export const assets = {
   spices2_image,
   spices3_image,
   spices4_image,
+  tea_coffee_image,
 };
 export const categories = [
   {
