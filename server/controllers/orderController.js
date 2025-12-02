@@ -132,17 +132,18 @@ export const stripeWebhooks=async (req,res)=>{
     //stripe gateway initialize
     const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    const sig=req.headres["stripe-signature"];
+    const sig = req.headers["stripe-signature"];
+
     let event;
 
     try {
       event =stripeInstance.webhooks.constructEvent(
-      request.body,
+      req.body,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
       );
     } catch (error) {
-      Response.status(400).send(`Webhook Error:${error.message}`)
+      return res.status(400).send(`Webhook Error:${error.message}`)
     }
 
     //Handle the event
@@ -184,7 +185,7 @@ export const stripeWebhooks=async (req,res)=>{
         console.error(`Unhandle event type ${event.type}`)
         break;
     }
-    Response.json({received:true});
+    res.json({received:true});
 }
 
 
