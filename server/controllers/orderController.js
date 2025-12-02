@@ -132,7 +132,7 @@ export const stripeWebhooks=async (req,res)=>{
     //stripe gateway initialize
     const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    const sig=requestAnimationFrame.headres["stripe-signature"];
+    const sig=req.headres["stripe-signature"];
     let event;
 
     try {
