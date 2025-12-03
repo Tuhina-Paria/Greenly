@@ -44,7 +44,8 @@ if(data.success){
 //Fetch User Auth Status,User Data and Cart Items
 const fetchUser =async ()=>{
   try {
-    const {data}=await axios.get('/api/user/is-auth')
+   const { data } = await axios.get('https://greenly-backend-nu.vercel.app/api/user/is-auth', { withCredentials: true });
+
     if(data.success){
       setUser(data.user)
       setCartItems(data.user.cartItems)
