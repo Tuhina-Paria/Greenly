@@ -157,7 +157,8 @@ fetchProducts();
 useEffect(()=>{
   const updateCart=async ()=>{
     try {
-      const {data}=await axios.post('/api/cart/update',{cartItems})
+      await axios.post('/api/cart/update', { cartItems }, { withCredentials: true });
+
       if(!data.success){
         toast.error(data.message)
       }
