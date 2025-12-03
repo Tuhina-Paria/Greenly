@@ -20,9 +20,11 @@ await connectDB()
 await connectCloudinary()
 
 // allow multiple origins
-const allowedOrigin = ["http://localhost:5173",
- "https://greenly-psi.vercel.app"
-]; // your frontend URL
+const allowedOrigin = [
+  "http://localhost:5173",
+  "https://greenly-psi.vercel.app"
+];
+// your frontend URL
 
 app.post('/stripe',express.raw({type:'application/json'}),stripeWebhooks)
 
