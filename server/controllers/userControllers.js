@@ -1,15 +1,16 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
 import cloudinary from "cloudinary";
 
-// REGISTER USER: POST /api/user/register
+// ------------------------------
+// REGISTER USER : POST /api/user/register
+// ------------------------------
 export const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // validate fields
+    // Validate fields
     if (!name || !email || !password) {
       return res.status(400).json({
         success: false,
@@ -17,7 +18,7 @@ export const register = async (req, res) => {
       });
     }
 
-    // check if user exists
+    // Check existing user
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
@@ -26,30 +27,28 @@ export const register = async (req, res) => {
       });
     }
 
-    // hash password
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // create user
+    // Create user
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
     });
 
-    // generate JWT
+    // Generate token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
-    // set cookie
+    // Set cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      secure: process.env.NODE_ENV === "production", // for Vercel
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
-
-
 
     return res.json({
       success: true,
@@ -61,19 +60,21 @@ export const register = async (req, res) => {
     });
   } catch (error) {
     console.log(error.message);
-    res.json({
+    return res.json({
       success: false,
       message: error.message,
     });
   }
 };
 
-// LOGIN USER: POST /api/user/login
+// ------------------------------
+// LOGIN USER : POST /api/user/login
+// ------------------------------
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // validation
+    // Check fields
     if (!email || !password) {
       return res.status(400).json({
         success: false,
@@ -81,16 +82,16 @@ export const login = async (req, res) => {
       });
     }
 
-    // check if user exists
+    // Check user
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({
         success: false,
-        message: "User does not exist,Please sign up",
+        message: "User does not exist, please sign up",
       });
     }
 
-    // compare password
+    // Match password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({
@@ -99,16 +100,16 @@ export const login = async (req, res) => {
       });
     }
 
-    // generate JWT
+    // Create token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
-    // set cookie
+    // Set cookie
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -122,16 +123,16 @@ export const login = async (req, res) => {
     });
   } catch (error) {
     console.log(error.message);
-    res.json({
+    return res.json({
       success: false,
       message: error.message,
     });
   }
 };
 
-
-//Check Auth :/api/user/is-auth
-
+// ------------------------------
+// CHECK AUTH : GET /api/user/is-auth
+// ------------------------------
 export const isAuth = async (req, res) => {
   try {
     const user = await User.findById(req.userId).select("-password");
@@ -146,48 +147,53 @@ export const isAuth = async (req, res) => {
     return res.json({ success: true, user });
   } catch (error) {
     console.log(error.message);
-    res.json({
+    return res.json({
       success: false,
       message: error.message,
     });
   }
 };
 
-// Logout user ://api/user/logout
-export const logout=async(req,res)=>{
+// ------------------------------
+// LOGOUT : GET /api/user/logout
+// ------------------------------
+export const logout = async (req, res) => {
   try {
-    res.clearCookie('token',{
-      httpOnly:true,
-       secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     });
-    return res.status(200).json({success:true,message:"Logged Out"});
 
+    return res.json({
+      success: true,
+      message: "Logged out successfully",
+    });
   } catch (error) {
     console.log(error.message);
-    res.json({
+    return res.json({
       success: false,
       message: error.message,
     });
   }
-}
+};
 
-
-
+// ------------------------------
+// UPDATE PROFILE : PUT /api/user/update
+// ------------------------------
 export const updateProfile = async (req, res) => {
   try {
     const { name, email, phone } = req.body;
-
     let imageUrl = null;
 
-    // If image uploaded
+    // Upload image if available
     if (req.file) {
-      const upload = await cloudinary.uploader.upload(req.file.path);
-      imageUrl = upload.secure_url;
+      const uploaded = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = uploaded.secure_url;
     }
 
     const user = await User.findByIdAndUpdate(
-      req.user.id,
+      req.userId, // FIXED HERE (should use req.userId)
       {
         name,
         email,
@@ -195,10 +201,17 @@ export const updateProfile = async (req, res) => {
         ...(imageUrl && { image: imageUrl }),
       },
       { new: true }
-    );
+    ).select("-password");
 
-    return res.json({ success: true, user });
+    return res.json({
+      success: true,
+      user,
+    });
   } catch (error) {
-    return res.json({ success: false, message: error.message });
+    console.log(error.message);
+    return res.json({
+      success: false,
+      message: error.message,
+    });
   }
 };
