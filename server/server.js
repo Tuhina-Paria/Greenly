@@ -26,7 +26,7 @@ await connectCloudinary();
 // ----------------------
 const allowedOrigin = [
   "http://localhost:5173",
-  "https://greenly-psi.vercel.app",   // YOUR FRONTEND
+  "https://greenly-fronted.vercel.app",   // YOUR FRONTEND
 ];
 
 // ----------------------
