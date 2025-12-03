@@ -3,6 +3,14 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import cloudinary from "cloudinary";
 
+// COOKIE CONFIG FIXED FOR VERCEL
+const COOKIE_OPTIONS = {
+  httpOnly: true,
+  secure: true,            // Always true in production (Vercel requires this)
+  sameSite: "none",        // Required for cross-domain cookies
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+};
+
 // ------------------------------
 // REGISTER USER : POST /api/user/register
 // ------------------------------
@@ -37,18 +45,13 @@ export const register = async (req, res) => {
       password: hashedPassword,
     });
 
-    // Generate token
+    // Create token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
-    // Set cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // for Vercel
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+    // Set cookie (FIXED)
+    res.cookie("token", token, COOKIE_OPTIONS);
 
     return res.json({
       success: true,
@@ -59,7 +62,7 @@ export const register = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     return res.json({
       success: false,
       message: error.message,
@@ -74,7 +77,6 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check fields
     if (!email || !password) {
       return res.status(400).json({
         success: false,
@@ -105,13 +107,8 @@ export const login = async (req, res) => {
       expiresIn: "7d",
     });
 
-    // Set cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+    // Set cookie (FIXED)
+    res.cookie("token", token, COOKIE_OPTIONS);
 
     return res.json({
       success: true,
@@ -122,7 +119,7 @@ export const login = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     return res.json({
       success: false,
       message: error.message,
@@ -146,7 +143,7 @@ export const isAuth = async (req, res) => {
 
     return res.json({ success: true, user });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     return res.json({
       success: false,
       message: error.message,
@@ -161,8 +158,8 @@ export const logout = async (req, res) => {
   try {
     res.clearCookie("token", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: true,
+      sameSite: "none",
     });
 
     return res.json({
@@ -170,7 +167,7 @@ export const logout = async (req, res) => {
       message: "Logged out successfully",
     });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     return res.json({
       success: false,
       message: error.message,
@@ -193,7 +190,7 @@ export const updateProfile = async (req, res) => {
     }
 
     const user = await User.findByIdAndUpdate(
-      req.userId, // FIXED HERE (should use req.userId)
+      req.userId,
       {
         name,
         email,
@@ -208,7 +205,7 @@ export const updateProfile = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     return res.json({
       success: false,
       message: error.message,
